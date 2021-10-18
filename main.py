@@ -27,7 +27,8 @@ if __name__ == "__main__":
         daq_code_path = os.path.join(daq_code_path,"DAQscore_colab")
         raw_score_save_path = os.path.join(save_path,"dqa_raw_score.pdb")
         os.system("chmod 777 "+daq_code_path)
-        os.system(daq_code_path+" -i "+cur_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
+        new_map_path = cur_map_path[:-4]+"_new.mrc"
+        os.system(daq_code_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
         from ops.process_raw_score import get_pdb,get_resscore,save_pdb_with_score
         window_size = params['window']
         score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
