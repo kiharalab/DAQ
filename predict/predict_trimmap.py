@@ -22,6 +22,7 @@ def predict_trimmap(trimmap_path, save_path,model_path, params):
     batch_size = params['batch_size']
     output_line = ""
     end_time = time.time()
+    count_total_batches =0
     with open(trimmap_path, 'r') as file:
         line = file.readline()
         origin = np.zeros(3)
@@ -107,14 +108,12 @@ def predict_trimmap(trimmap_path, save_path,model_path, params):
                         wline += str(pred_prob3[kk]) + ","
                     output_line +=wline+"\n"
 
-                # print(Prediction_Dict)
-                # exit()
-                print("batch processing time %f"%(time.time()-end_time))
+                print("%d batch processing time %f"%(count_total_batches,time.time()-end_time))
                 end_time = time.time()
                 count_example = 0
                 Position_List = []
                 input_use = np.zeros([batch_size, 1, voxel_size1, voxel_size1, voxel_size1])
-
+                count_total_batches+=1
             line = file.readline()
         if count_example != 0:
             input_use = input_use[:count_example]
