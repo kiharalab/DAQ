@@ -27,7 +27,7 @@ def generate_trimmap(save_path,origin_map_path,params):
         print("-" * 100)
     trimmap_path = os.path.join(save_path, map_name + ".trimmap")
     factor = params['stride']
-    voxel_size = params['voxel_size1']
+    voxel_size = params['voxel_size']
     contour_level = params['contour']
 
     half_voxel_size = int((voxel_size - 1) / 2)

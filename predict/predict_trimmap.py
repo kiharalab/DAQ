@@ -9,7 +9,7 @@ from models.resnet import resnet18 as resnet18_multi
 import time
 
 def predict_trimmap(trimmap_path, save_path,model_path, params):
-    model = resnet18_multi(sample_size=params['voxel_size1'])
+    model = resnet18_multi(sample_size=params['voxel_size'])
     model = model.cuda()
     # model = nn.DataParallel(model, device_ids=None)
 
@@ -18,7 +18,7 @@ def predict_trimmap(trimmap_path, save_path,model_path, params):
     model.load_state_dict(state_dict['state_dict'])
     model.eval()
 
-    voxel_size1 = params['voxel_size1']
+    voxel_size1 = params['voxel_size']
     batch_size = params['batch_size']
     output_line = ""
     end_time = time.time()
