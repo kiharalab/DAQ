@@ -37,13 +37,13 @@ def get_pdb(filename):
                 x=float(l[30:38])
                 y=float(l[38:46])
                 z=float(l[46:55])
-                cd=np.array([x,y,z])
+                cd=[x,y,z]
                 sco=float(l[61:67])
                 AA = l[17:20]
                 p[resn]=[cd,AA]
     return p
 
-def save_pdb_with_score(p,d,ch,window,filename):
+def save_pdb_with_score(p,d,ch,filename):
     
     # p: pdb checking dict [coord,amino acid]
     # d: score matching dict

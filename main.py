@@ -35,5 +35,5 @@ if __name__ == "__main__":
         score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
         pdb_dict = get_pdb(pdb_path)
         score_dict = get_resscore(raw_score_save_path,window_size)
-        save_pdb_with_score(pdb_dict,score_dict,'A',window_size,score_save_path)
+        save_pdb_with_score(pdb_dict,score_dict,'A',score_save_path)
    
