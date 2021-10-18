@@ -1,38 +1,38 @@
-# DeepMainMast
+# DAQ
 
 <a href="https://github.com/marktext/marktext/releases/latest">
-   <img src="https://img.shields.io/badge/DeepMainMast-v1.0.0-green">
+   <img src="https://img.shields.io/badge/DAQ-v1.0.0-green">
    <img src="https://img.shields.io/badge/platform-Linux%20%7C%20Mac%20-green">
    <img src="https://img.shields.io/badge/Language-python3-green">
    <img src="https://img.shields.io/badge/Language-C-green">
    <img src="https://img.shields.io/badge/dependencies-tested-green">
    <img src="https://img.shields.io/badge/licence-GNU-green">
-</a>   
+</a>      
+DAQ is a computational tool using deep learning that can estimate the residue-wise local quality in cryo-Electron Microscopy (EM) maps.  
 
-DeepMainMast is a computational tool using deep learning and mean shift algorithms that can accurately rebuild the protein structure in cryo-Electron Microscopy (EM) maps of relatively high resolution.  
-
-Copyright (C) 2020 Xiao Wang*, Genki Terashi*, Sai Raghavendra Maddhuri*,  Daisuke Kihara, and Purdue University. 
+Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
 
 License: GPL v3 for academic use. (For commercial use, please contact us for different licensing.)
 
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
 ## Citation:
+Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer & Daisuke Kihara. Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps.  bioArxiv (2021). [PDF]()
+```
+@article{genki2021DAQ,   
+  title={Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps},   
+  author={Genki Terashi, Xiao Wang, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara},    
+  journal={BioArxiv},    
+  year={2021}    
+}   
+```
 
-## Project website: http://kiharalab.org/emsuites/deepmainmast.php
+## Colab Website (Online platform): https://colab.research.google.com/drive/1Q-Dj42QjVO8TCOLXMQBJlvm1zInxPkOu?usp=sharing 
 
 ## Introduction
-
+An increasing number of protein structures are determined by cryogenic electron microscopy (cryo-EM). Although the resolution of determined cryo-EM density maps is improving in general, there are still many cases where amino acids of a protein are assigned with different levels of confidence, including those assigned with relatively high ambiguity, to the map. Here, we developed a method that identifies potential miss-assignment residues in the map, including residue shifts along a main-chain trace. The method named DAQ computes the likelihood that each local density corresponds to different amino acids, atoms, and secondary structures from the map density distribution and assesses how well amnio acids in the reconstructed model structure agree with the likelihood. DAQ is complementary to existing model validation scores for cryo-EM that examine local density gradient in the map or stereochemical geometry of the structure model. When DAQ was applied to different versions of model structure entries in PDB that were derived from the same density maps, a clear improvement of DAQ-score was observed in the newer version of the models. We also applied DAQ to a larger dataset of protein structure models from cryo-EM and suggested potential misassignment of residues.
 
 ## Overall Protocol
-
-
-## Overall Network Framework
-
-
-### Phase 1 Network Architecture
-
-### Phase 2 Network Architecture
 
 
 ## Pre-required software
