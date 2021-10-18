@@ -52,7 +52,7 @@ def save_pdb_with_score(p,d,ch,window,filename):
     for resn in p:
         if resn in d:
             #sco = d[resn][window+1]
-            sco = -d[resn][window+1] #Opposit!! Lower is better for pymol
+            sco = -d[resn][0] #Opposit!! Lower is better for pymol
             line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,p[resn][1],ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
             Natm = Natm+1
             output.write(line)
