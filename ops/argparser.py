@@ -15,7 +15,7 @@ def argparser():
     parser.add_argument("--gpu",type=str,default=None,help="specify the gpu we will use")
     parser.add_argument('--batch_size', type=int, default=256, help='batch size for inference')
     parser.add_argument('--cardinality', default=32, type=int, help='ResNeXt cardinality')
-    parser.add_argument("--window",default=9,help="window size to smooth the score for output")
+    parser.add_argument("--window",default=9,type=float,help="window size to smooth the score for output")
     args = parser.parse_args()
     params = vars(args)
     return params
