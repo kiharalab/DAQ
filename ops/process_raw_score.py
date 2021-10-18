@@ -9,7 +9,7 @@ def get_resscore(filename,window):
                 x=float(l[30:38])
                 y=float(l[38:46])
                 z=float(l[46:54])
-                cd=np.array([x,y,z])
+                cd=([x,y,z])
                 sco=float(l[61:67])
                 p[resn]=[cd,sco]
                 #print('Res',resn,p[resn])
@@ -43,17 +43,16 @@ def get_pdb(filename):
                 p[resn]=[cd,AA]
     return p
 
-def save_pdb_with_score(p,d,ch,filename):
+def save_pdb_with_score(p,ch,filename):
     
     # p: pdb checking dict [coord,amino acid]
     # d: score matching dict
     output = open(filename, 'w')
     Natm=1
     for resn in p:
-        if resn in d:
-            #sco = d[resn][window+1]
-            sco = -d[resn][0] #Opposit!! Lower is better for pymol
-            line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,p[resn][1],ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
-            Natm = Natm+1
-            output.write(line)
+        #sco = d[resn][window+1]
+        sco = -p[resn][2] #Opposit!! Lower is better for pymol
+        line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,p[resn][1],ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
+        Natm = Natm+1
+        output.write(line)
     output.close()
