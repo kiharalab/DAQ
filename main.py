@@ -19,5 +19,10 @@ if __name__ == "__main__":
         from predict.predict_trimmap import predict_trimmap
         output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
         print("Our predictions are saved in %s, please have a check!"%output_path)
-
+        #further call daq score to output the final score
+        pdb_path = os.path.abspath(params['P'])
+        daq_code_path = os.path.join(os.getcwd(),"predict")
+        daq_code_path = os.path.join(daq_code_path,"DAQscore_colab")
+        os.system("chmod 777 "+daq_code_path)
+        os.system(daq_code_path+" -i "+cur_map_path+" -p "+output_path+" -Q "+str(pdb_path))
    

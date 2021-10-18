@@ -152,3 +152,4 @@ def predict_trimmap(trimmap_path, save_path,model_path, params):
     prediction_path = os.path.join(save_path, "prediction.txt")
     with open(prediction_path, 'w') as file:
         file.write(output_line)
+    return prediction_path
