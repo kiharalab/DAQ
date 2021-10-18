@@ -28,7 +28,7 @@ if __name__ == "__main__":
         raw_score_save_path = os.path.join(save_path,"dqa_raw_score.pdb")
         os.system("chmod 777 "+daq_code_path)
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
-        new_map_path = os.path.join(save_path,map_name+".mrc")
+        new_map_path = os.path.join(save_path,map_name+"_new.mrc")
         os.system(daq_code_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
         from ops.process_raw_score import get_pdb,get_resscore,save_pdb_with_score
         window_size = params['window']
