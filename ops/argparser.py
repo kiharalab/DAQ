@@ -6,7 +6,7 @@ import argparse
 def argparser():
     parser = argparse.ArgumentParser()
     parser.add_argument('-F',type=str, help='Map file path')#File path for decoy dir
-    parser.add_argument('-M', type=str,default="best_model/qa_model",  help='Phase1 model path')
+    parser.add_argument('-M', type=str,default="best_model/qa_model/Multimodel.pth",  help='Phase1 model path')
     parser.add_argument('--mode',type=int,required=True,help='Running Mode')
     parser.add_argument("--contour",type=float,default=0,help="Map contour level")
     parser.add_argument("--stride",type=int,default=1,help="Stride size for scanning maps (default:1)")
