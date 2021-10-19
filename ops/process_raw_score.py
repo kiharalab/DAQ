@@ -18,14 +18,12 @@ def get_resscore(filename,window):
         for resn in p:
             cnt=1
             sco=p[resn][1]
-            c=str(int(resn)-window)
-            if c in p:
-                sco=sco+p[c][1]
-                cnt=cnt+1
-            c=str(int(resn)+window)
-            if c in p:
-                sco=sco+p[c][1]
-                cnt=cnt+1
+            
+            for check_c in range(int(resn)-window,int(resn)+window+1):
+                c=str(check_c)
+                if c in p:
+                    sco=sco+p[c][1]
+                    cnt=cnt+1
             p[resn].append(sco/float(cnt))
     return p
 def get_pdb(filename):
