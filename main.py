@@ -30,10 +30,11 @@ if __name__ == "__main__":
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
         new_map_path = os.path.join(save_path,map_name+"_new.mrc")
         os.system(daq_code_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
-        from ops.process_raw_score import get_pdb,get_resscore,save_pdb_with_score
+        from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score
         window_size = params['window']
         score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
         
         score_dict = get_resscore(raw_score_save_path,window_size)
-        save_pdb_with_score(score_dict,'A',score_save_path)
+        residue_dict = read_pdb_info(pdb_path)
+        save_pdb_with_score(score_dict, residue_dict,'A',score_save_path)
    
