@@ -36,5 +36,5 @@ if __name__ == "__main__":
         
         score_dict = get_resscore(raw_score_save_path,window_size)
         residue_dict = read_pdb_info(pdb_path)
-        save_pdb_with_score(score_dict, residue_dict,'A',score_save_path)
+        save_pdb_with_score(score_dict, residue_dict,score_save_path)
    
