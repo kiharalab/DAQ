@@ -43,17 +43,32 @@ def get_pdb(filename):
                 AA = l[17:20]
                 p[resn]=[cd,AA]
     return p
-
-def save_pdb_with_score(p,ch,filename):
+from collections import defaultdict
+def read_pdb_info(filename):
+    #read each residues for all other informations
+    residue_dict=defaultdict(list)
+    with open(filename) as result:
+        for l in result:
+            if l.startswith('ATOM'):
+                chain_name = l[21]
+                atom_name = l[12:15]
+                x=float(l[30:38])
+                y=float(l[38:46])
+                z=float(l[46:55])
+                resn=l[22:26].replace(' ','')
+                residue_dict[resn].append([chain_name,atom_name,x,y,z])
+    return residue_dict
+def save_pdb_with_score(p,residue_dict,filename):
     
-    # p: pdb checking dict [coord,amino acid]
-    # d: score matching dict
+    
     output = open(filename, 'w')
     Natm=1
     for resn in p:
-        #sco = d[resn][window+1]
+        
         sco = -p[resn][3] #Opposit!! Lower is better for pymol
-        line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,p[resn][2] ,ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
+        current_residue = residue_dict[resn]
+        for item in current_residue:
+            line='ATOM{:7d}{:4}  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,item[1],p[resn][2] ,item[0],int(resn),item[2],item[3],item[4],sco)
         Natm = Natm+1
         output.write(line)
     output.close()
