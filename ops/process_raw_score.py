@@ -6,12 +6,13 @@ def get_resscore(filename,window):
             if(l.startswith('ATOM')):
                 resn=l[22:26].replace(' ','')
                 #print('|'+l[30:38]+'|'+l[38:46]+'|'+l[46:54]+'|',resn)
+                res_name = l[17:20]
                 x=float(l[30:38])
                 y=float(l[38:46])
                 z=float(l[46:54])
                 cd=([x,y,z])
                 sco=float(l[61:67])
-                p[resn]=[cd,sco]
+                p[resn]=[cd,sco,res_name]
                 #print('Res',resn,p[resn])
         #Window Score
         for resn in p:
@@ -51,8 +52,8 @@ def save_pdb_with_score(p,ch,filename):
     Natm=1
     for resn in p:
         #sco = d[resn][window+1]
-        sco = -p[resn][2] #Opposit!! Lower is better for pymol
-        line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,resn,ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
+        sco = -p[resn][3] #Opposit!! Lower is better for pymol
+        line='ATOM{:7d}  CA  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,p[resn][2] ,ch,int(resn),p[resn][0][0],p[resn][0][1],p[resn][0][2],sco)
         Natm = Natm+1
         output.write(line)
     output.close()
