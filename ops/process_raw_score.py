@@ -69,6 +69,6 @@ def save_pdb_with_score(p,residue_dict,filename):
         current_residue = residue_dict[resn]
         for item in current_residue:
             line='ATOM{:7d}{:4}  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,item[1],p[resn][2] ,item[0],int(resn),item[2],item[3],item[4],sco)
-        Natm = Natm+1
-        output.write(line)
+            Natm = Natm+1
+            output.write(line)
     output.close()
