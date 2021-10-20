@@ -517,12 +517,13 @@ int AtomVox(MRC *m, PDB *p,DSSP *d,VOXEL *v, int N,double r){
 		 aa=p->TypeResId[res];
 		 atm=p->TypeAtomId[aid];
 		 dssp_res=p->DSSPmapper[res];
-		 ss=d->ss[dssp_res];
+		 ss=-1000;acc=-1000;kap=-1000;alpha=-1000;phi=-1000;psi=-1000;
+		 /*ss=d->ss[dssp_res];
 		 acc=d->acc[dssp_res];
 		 kap=d->kappa[dssp_res];
 		 alpha=d->alpha[dssp_res];
 		 phi=d->phi[dssp_res];
-		 psi=d->psi[dssp_res];
+		 psi=d->psi[dssp_res];*/
 		}else if(m->inside[idx]==true){//inside of contour level
 		 	//aid=-1;
 			//res=-1;
