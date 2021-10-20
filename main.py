@@ -16,7 +16,7 @@ if __name__ == "__main__":
         mkdir(save_path)
         #give pdb path to save computing voxels
         from data_processing.generate_trimmap import generate_trimmap
-        save_path,trimmap_path = generate_trimmap(save_path,cur_map_path,params)
+        save_path,trimmap_path = generate_trimmap(save_path,cur_map_path,pdb_path,params)
         print("Finished processing model input!")
         from predict.predict_trimmap import predict_trimmap
         output_path = os.path.join(save_path, "prediction.txt")
