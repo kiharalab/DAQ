@@ -11,8 +11,10 @@ if __name__ == "__main__":
             os.environ["CUDA_VISIBLE_DEVICES"] = choose
         cur_map_path = os.path.abspath(params['F'])
         model_path = os.path.abspath(params['M'])
+        pdb_path = os.path.abspath(params['P'])
         save_path = os.path.join(os.getcwd(), 'Predict_Result')
         mkdir(save_path)
+        #give pdb path to save computing voxels
         from data_processing.generate_trimmap import generate_trimmap
         save_path,trimmap_path = generate_trimmap(save_path,cur_map_path,params)
         print("Finished processing model input!")
@@ -22,7 +24,7 @@ if __name__ == "__main__":
             output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
         print("Our predictions are saved in %s, please have a check!"%output_path)
         #further call daq score to output the final score
-        pdb_path = os.path.abspath(params['P'])
+        
         daq_code_path = os.path.join(os.getcwd(),"predict")
         daq_code_path = os.path.join(daq_code_path,"DAQscore_colab")
         raw_score_save_path = os.path.join(save_path,"dqa_raw_score.pdb")
