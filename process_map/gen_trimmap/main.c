@@ -115,7 +115,6 @@ int main(int argc, char **argv)
 		mrc.inside[i]=true;
 
  float TopCut=FindTopX(&mrc,cmd.Ubound);
- // upsampling(&mrc,cmd.th1)
  //norm
  for(int i=0;i<mrc.xdim*mrc.ydim*mrc.zdim;i++){
 	 mrc.dens[i]=mrc.dens[i]/(TopCut);
@@ -124,7 +123,7 @@ int main(int argc, char **argv)
 	 if(mrc.dens[i]<0.00)
 		mrc.dens[i]=0.000;
  }
- printf("Current mode %d\n",cmd.Mode);
+
  //Use PDB and DSSP
  if(cmd.Mode==1){
   printf("#USE PDB FILE\n");
@@ -138,9 +137,10 @@ int main(int argc, char **argv)
  	// return(0);
 
  	//if(CompPdbDssp(&pdb,&dssp))
-	 //return(0);
+	// return(0);
  	//Assign Atom to voxel
  	AssignAtom(&mrc,&pdb,vox,cmd.NoP2);
+	puts("##ASSIGN ATOM DONE");
  }else{
   printf("#SCAN MODE\n");
   pdb.NumOfAtom=0;
@@ -516,6 +516,7 @@ int AtomVox(MRC *m, PDB *p,DSSP *d,VOXEL *v, int N,double r){
 		 res=p->AtomOnRes[aid];
 		 aa=p->TypeResId[res];
 		 atm=p->TypeAtomId[aid];
+		/*
 		 dssp_res=p->DSSPmapper[res];
 		 ss=d->ss[dssp_res];
 		 acc=d->acc[dssp_res];
@@ -523,6 +524,7 @@ int AtomVox(MRC *m, PDB *p,DSSP *d,VOXEL *v, int N,double r){
 		 alpha=d->alpha[dssp_res];
 		 phi=d->phi[dssp_res];
 		 psi=d->psi[dssp_res];
+		*/
 		}else if(m->inside[idx]==true){//inside of contour level
 		 	//aid=-1;
 			//res=-1;

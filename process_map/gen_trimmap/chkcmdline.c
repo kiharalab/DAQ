@@ -133,7 +133,6 @@ int chkcmdline( int argc, char **argv,CMD *cmd){
 	printf("#Sliding Step = %d\n",cmd->slide);
 	printf("#Protein  d <= %f\n",cmd->r);
 	printf("#No Protein %f < d <= %f\n",cmd->NoP1,cmd->NoP2);
-	printf("mode: %d\n",cmd->Mode);
         return(TRUE);
 }
 

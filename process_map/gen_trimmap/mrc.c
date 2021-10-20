@@ -331,7 +331,7 @@ bool upsampling(MRC *mrc,double t){
  float *map;
  unsigned int cnt=0;
  //Filtering Only
- if(mrc->widthx <= 1.0){
+ if(mrc->widthx < 1.0){
   for(i=0;i<mrc->NumVoxels;i++){
    if(mrc->dens[i]<t)
     mrc->dens[i]=0.00;
