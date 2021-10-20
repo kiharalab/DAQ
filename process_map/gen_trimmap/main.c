@@ -134,11 +134,11 @@ int main(int argc, char **argv)
  	if(readpdb(&pdb,cmd.file1,Natm))
  	 return(0);
 
- 	if(ReadDssp(&dssp,cmd.file2))
- 	 return(0);
+ 	//if(ReadDssp(&dssp,cmd.file2))
+ 	// return(0);
 
- 	if(CompPdbDssp(&pdb,&dssp))
-	 return(0);
+ 	//if(CompPdbDssp(&pdb,&dssp))
+	 //return(0);
  	//Assign Atom to voxel
  	AssignAtom(&mrc,&pdb,vox,cmd.NoP2);
  }else{
