@@ -64,7 +64,7 @@ pip3 install scipy==1.6.0
 ```
 
 #### 3.2 Install with anaconda
-##### 3.2.1 [`install conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html). 
+##### 3.2.1 [`install conda`](https://bit.ly/daq-score). 
 ##### 3.2.2 Install dependency in command line
 ```
 conda create -n deepmainamst python=3.8.5
