@@ -27,7 +27,7 @@ Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John 
 }   
 ```
 
-## Colab Website (Online platform): https://colab.research.google.com/drive/1Q-Dj42QjVO8TCOLXMQBJlvm1zInxPkOu?usp=sharing 
+## Colab Website (Online platform): https://bit.ly/daq-score
 
 ## Introduction
 An increasing number of protein structures are determined by cryogenic electron microscopy (cryo-EM). Although the resolution of determined cryo-EM density maps is improving in general, there are still many cases where amino acids of a protein are assigned with different levels of confidence, including those assigned with relatively high ambiguity, to the map. Here, we developed a method that identifies potential miss-assignment residues in the map, including residue shifts along a main-chain trace. The method named DAQ computes the likelihood that each local density corresponds to different amino acids, atoms, and secondary structures from the map density distribution and assesses how well amnio acids in the reconstructed model structure agree with the likelihood. DAQ is complementary to existing model validation scores for cryo-EM that examine local density gradient in the map or stereochemical geometry of the structure model. When DAQ was applied to different versions of model structure entries in PDB that were derived from the same density maps, a clear improvement of DAQ-score was observed in the newer version of the models. We also applied DAQ to a larger dataset of protein structure models from cryo-EM and suggested potential misassignment of residues.
@@ -64,7 +64,7 @@ pip3 install scipy==1.6.0
 ```
 
 #### 3.2 Install with anaconda
-##### 3.2.1 [`install conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html). 
+##### 3.2.1 [`install conda`](https://bit.ly/daq-score). 
 ##### 3.2.2 Install dependency in command line
 ```
 conda create -n deepmainamst python=3.8.5

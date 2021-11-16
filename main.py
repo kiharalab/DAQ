@@ -20,8 +20,8 @@ if __name__ == "__main__":
         print("Finished processing model input!")
         from predict.predict_trimmap import predict_trimmap
         output_path = os.path.join(save_path, "prediction.txt")
-        if not os.path.exists(output_path):
-            output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
+        #if not os.path.exists(output_path):
+        output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
         print("Our predictions are saved in %s, please have a check!"%output_path)
         #further call daq score to output the final score
         
