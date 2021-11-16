@@ -50,11 +50,12 @@ if __name__ == "__main__":
         window_size = params['window']
         score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
         chain_list = read_chain_set(pdb_path)
+        print("total different chains:",chain_list)
         for chain_name in chain_list:
             score_chain_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
             score_dict = get_resscore(raw_score_save_path,window_size,chain_name)
             residue_dict = read_pdb_info(pdb_path,chain_name)
-            save_pdb_with_score(score_dict, residue_dict,score_save_path)
+            save_pdb_with_score(score_dict, residue_dict,score_chain_save_path)
         #concat all chain visualization together
         with open(score_save_path,'w') as wfile:
             for chain_name in chain_list:
