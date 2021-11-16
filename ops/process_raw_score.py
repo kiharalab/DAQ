@@ -1,9 +1,9 @@
 import numpy as np
-def get_resscore(filename,window):
+def get_resscore(filename,window,chain_id):
     p={}
     with open(filename) as result:
         for l in result:
-            if(l.startswith('ATOM')):
+            if (l.startswith('ATOM')) and l[21]==chain_id:
                 resn=l[22:26].replace(' ','')
                 #print('|'+l[30:38]+'|'+l[38:46]+'|'+l[46:54]+'|',resn)
                 res_name = l[17:20]
@@ -42,12 +42,12 @@ def get_pdb(filename):
                 p[resn]=[cd,AA]
     return p
 from collections import defaultdict
-def read_pdb_info(filename):
+def read_pdb_info(filename,chain_id):
     #read each residues for all other informations
     residue_dict=defaultdict(list)
     with open(filename) as result:
         for l in result:
-            if l.startswith('ATOM'):
+            if l.startswith('ATOM') and chain_name[21]==chain_id:
                 chain_name = l[21]
                 atom_name = l[12:15]
                 x=float(l[30:38])
@@ -56,6 +56,17 @@ def read_pdb_info(filename):
                 resn=l[22:26].replace(' ','')
                 residue_dict[resn].append([chain_name,atom_name,x,y,z])
     return residue_dict
+def read_chain_set(filename):
+    #read each residues for all other informations
+    chain_set = set()
+    with open(filename) as result:
+        for l in result:
+            if l.startswith('ATOM'):
+                chain_name = l[21]
+                chain_set.add(chain_name)
+    return chain_set
+
+
 def save_pdb_with_score(p,residue_dict,filename):
     
     

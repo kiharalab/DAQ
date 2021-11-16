@@ -2,6 +2,18 @@ import os
 from ops.argparser import argparser
 from ops.os_operation import mkdir
 import time
+def compile_online(code_path):
+    exe_path = os.path.join(code_path,"DAQscore_colab")
+    if os.path.exists(exe_path):
+        os.remove(exe_path)
+    root_path = os.getcwd()
+    os.chdir(code_path)
+    os.system("make")
+    os.chdir(root_path)
+    if not os.path.exists(code_path):
+        print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
+    assert os.path.exists(code_path)
+    return code_path
 
 if __name__ == "__main__":
     params = argparser()
@@ -24,19 +36,32 @@ if __name__ == "__main__":
         output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
         print("Our predictions are saved in %s, please have a check!"%output_path)
         #further call daq score to output the final score
+        daq_code_path = os.path.join(os.getcwd(),"assign_score")
+        exe_path = compile_online(daq_code_path)
         
-        daq_code_path = os.path.join(os.getcwd(),"predict")
-        daq_code_path = os.path.join(daq_code_path,"DAQscore_colab")
         raw_score_save_path = os.path.join(save_path,"dqa_raw_score.pdb")
-        os.system("chmod 777 "+daq_code_path)
+        os.system("chmod 777 "+exe_path)
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
         new_map_path = os.path.join(save_path,map_name+"_new.mrc")
-        os.system(daq_code_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
-        from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score
+        os.system(exe_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
+
+        #smooth the score to give the final output
+        from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
         window_size = params['window']
         score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
-        
-        score_dict = get_resscore(raw_score_save_path,window_size)
-        residue_dict = read_pdb_info(pdb_path)
-        save_pdb_with_score(score_dict, residue_dict,score_save_path)
+        chain_list = read_chain_set(pdb_path)
+        for chain_name in chain_list:
+            score_chain_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
+            score_dict = get_resscore(raw_score_save_path,window_size,chain_name)
+            residue_dict = read_pdb_info(pdb_path,chain_name)
+            save_pdb_with_score(score_dict, residue_dict,score_save_path)
+        #concat all chain visualization together
+        with open(score_save_path,'w') as wfile:
+            for chain_name in chain_list:
+                score_chain_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
+                with open(score_chain_save_path,'r') as rfile:
+                    line = rfile.readline()
+                    while line:
+                        wfile.write(line)
+                        line = rfile.readline()
    
