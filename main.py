@@ -22,6 +22,10 @@ if __name__ == "__main__":
         if choose is not None:
             os.environ["CUDA_VISIBLE_DEVICES"] = choose
         cur_map_path = os.path.abspath(params['F'])
+        #process the map path if it's ending with .gz
+        if ".gz"==cur_map_path[-3:]:
+            from ops.os_operation import unzip_gz
+            cur_map_path = unzip_gz(cur_map_path)
         model_path = os.path.abspath(params['M'])
         pdb_path = os.path.abspath(params['P'])
         save_path = os.path.join(os.getcwd(), 'Predict_Result')
@@ -65,3 +69,4 @@ if __name__ == "__main__":
                     while line:
                         wfile.write(line)
                         line = rfile.readline()
+        print("Please check result here: %s"%score_save_path)

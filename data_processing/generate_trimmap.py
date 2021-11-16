@@ -39,7 +39,8 @@ def generate_trimmap(save_path,origin_map_path,input_pdb_path,params):
     run_code_path = os.path.join(code_path, 'TrimMapAtom')
     root_path = os.getcwd()
     os.chdir(code_path)
-    if not os.path.exists(run_code_path):
+    if os.path.exists(run_code_path):
+        os.remove(run_code_path)
         os.system("make clean")
         os.system("rm *.o")
         os.system("make")  # compile the code
