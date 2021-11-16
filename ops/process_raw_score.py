@@ -47,7 +47,7 @@ def read_pdb_info(filename,chain_id):
     residue_dict=defaultdict(list)
     with open(filename) as result:
         for l in result:
-            if l.startswith('ATOM') and chain_name[21]==chain_id:
+            if l.startswith('ATOM') and l[21]==chain_id:
                 chain_name = l[21]
                 atom_name = l[12:15]
                 x=float(l[30:38])

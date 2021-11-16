@@ -14,16 +14,19 @@ def generate_trimmap(save_path,origin_map_path,input_pdb_path,params):
 
     new_map_path = cur_map_path[:-4]+"_new.mrc"
     from process_map.Reform_Map_Voxel import Reform_Map_Voxel, Reform_Map_Voxel_Final
+    raise_exception_flag = False
     try:
         Reform_Map_Voxel(cur_map_path, new_map_path)
     except:
+        raise_exception_flag = True
         Reform_Map_Voxel_Final(cur_map_path, new_map_path)
     finally:
         print("-" * 100)
-        print(
-            "if it's the map have different sizes in different axis, we suggest to use eman2 e2proc3d.py to change it's to symmetrical")
-        print("Example command:")
-        print("e2proc3d.py input.mrc output.mrc --clip max_dim_size")
+        print("resizing finished!")
+        if raise_exception_flag:
+            print("if it's a map that has different sizes in different axis, we suggest to use eman2 e2proc3d.py to change it's to symmetrical")
+            print("Example command:")
+            print("e2proc3d.py input.mrc output.mrc --clip max_dim_size")
         print("-" * 100)
     trimmap_path = os.path.join(save_path, map_name + ".trimmap")
     factor = params['stride']

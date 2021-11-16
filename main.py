@@ -10,10 +10,10 @@ def compile_online(code_path):
     os.chdir(code_path)
     os.system("make")
     os.chdir(root_path)
-    if not os.path.exists(code_path):
+    if not os.path.exists(exe_path):
         print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
-    assert os.path.exists(code_path)
-    return code_path
+    assert os.path.exists(exe_path)
+    return exe_path
 
 if __name__ == "__main__":
     params = argparser()
@@ -64,4 +64,3 @@ if __name__ == "__main__":
                     while line:
                         wfile.write(line)
                         line = rfile.readline()
-   
