@@ -7,8 +7,8 @@
    <img src="https://img.shields.io/badge/Language-C-green">
    <img src="https://img.shields.io/badge/dependencies-tested-green">
    <img src="https://img.shields.io/badge/licence-GNU-green">
-</a>      
-DAQ is a computational tool using deep learning that can estimate the residue-wise local quality in cryo-Electron Microscopy (EM) maps.  
+</a>      <br>
+DAQ is a computational tool using deep learning that can estimate the residue-wise local quality fro protein models from cryo-Electron Microscopy (EM) maps.  
 
 Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
 
@@ -28,11 +28,14 @@ Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John 
 ```
 
 ## Colab Website (Online platform): https://bit.ly/daq-score
+**All the functions in this github are also **
 
 ## Introduction
-An increasing number of protein structures are determined by cryogenic electron microscopy (cryo-EM). Although the resolution of determined cryo-EM density maps is improving in general, there are still many cases where amino acids of a protein are assigned with different levels of confidence, including those assigned with relatively high ambiguity, to the map. Here, we developed a method that identifies potential miss-assignment residues in the map, including residue shifts along a main-chain trace. The method named DAQ computes the likelihood that each local density corresponds to different amino acids, atoms, and secondary structures from the map density distribution and assesses how well amnio acids in the reconstructed model structure agree with the likelihood. DAQ is complementary to existing model validation scores for cryo-EM that examine local density gradient in the map or stereochemical geometry of the structure model. When DAQ was applied to different versions of model structure entries in PDB that were derived from the same density maps, a clear improvement of DAQ-score was observed in the newer version of the models. We also applied DAQ to a larger dataset of protein structure models from cryo-EM and suggested potential misassignment of residues.
+An increasing number of protein structures are determined by cryogenic electron microscopy (cryo-EM). Although the resolution of determined cryo-EM density maps is improving in general, there are still many cases where amino acids of a protein are assigned with different levels of confidence, including those assigned with relatively high ambiguity. Here, we developed a method that identifies potential misassignment of residues in the map, including residue shifts along an otherwise correct main-chain trace. The score, named DAQ, computes the likelihood that the local density corresponds to different amino acids, atoms, and secondary structures from the map density distribution and assesses how well amino acids in the reconstructed model structure agree with the likelihood. DAQ is complementary to existing model validation scores for cryo-EM that examine local density gradient in the map or stereochemical geometry of the structure model. When DAQ was applied to different versions of model structure entries in PDB that were derived from the same density maps, a clear improvement of DAQ-score was observed in the newer versions of the models. The DAQ-score also found potential misassignment errors in a substantial number of over 4400 deposited protein structure models built into cryo-EM maps.
+
 
 ## Overall Protocol
+![image](https://user-images.githubusercontent.com/50850224/142256884-b3e13cf6-c405-4336-9635-58fc24716658.png)
 
 
 ## Pre-required software
@@ -43,7 +46,7 @@ Pymol(for visualization): https://pymol.org/2/
 ### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 ### 2. Clone the repository in your computer 
 ```
-git clone git@github.com:kiharalab/DeepMainMast.git && cd DeepMainMast
+git clone https://github.com/kiharalab/DAQ && cd DAQ
 ```
 
 ### 3. Build dependencies.   
@@ -56,24 +59,24 @@ pip3 install -r requirement.txt --user
 ```
 If you encounter any errors, you can install each library one by one:
 ```
-pip3 install mrcfile==1.2.0
-pip3 install numpy==1.19.4
-pip3 install numba==0.52.0
-pip3 install torch==1.6.0
-pip3 install scipy==1.6.0
+!pip install mrcfile==1.2.0 
+!pip install numpy>=1.19.4
+!pip install numba>=0.52.0
+!pip install torch>=1.6.0
+!pip install scipy>=1.6.0
 ```
 
 #### 3.2 Install with anaconda
 ##### 3.2.1 [`install conda`](https://bit.ly/daq-score). 
 ##### 3.2.2 Install dependency in command line
 ```
-conda create -n deepmainamst python=3.8.5
-conda activate deepmainmast
+conda create -n daq python=3.8.5
+conda activate daq
 pip install -r requirement.txt 
 ```
 Each time when you want to run my code, simply activate the environment by
 ```
-conda activate deepmainmast
+conda activate daq
 conda deactivate(If you want to exit) 
 ```
 
@@ -82,26 +85,25 @@ conda deactivate(If you want to exit)
 python3 main.py -h:
   -h, --help            show this help message and exit
   -F F                  Map file path
-  -M1 M1                Phase1 model path
-  -M2 M2                Phase2 model path
+  -M M                  QA deep learning model path, default:"best_model/qa_model/Multimodel.pth"
+  -P P                  PDB file path
   --mode MODE           Running Mode
-  --contour CONTOUR     Map contour level
   --stride STRIDE       Stride size for scanning maps (default:1)
-  --voxel_size1 VOXEL_SIZE1
-                        Phase1 input voxel size
-  --voxel_size2 VOXEL_SIZE2
-                        Phase2 input voxel size
-  --gpu GPU             specify the gpu we will use
-  --batch_size BATCH_SIZE
-                        batch size for inference
-  --cardinality CARDINALITY
-                        ResNeXt cardinality
-  --workers WORKERS     number of workers for dataloader
+  --voxel_size          input voxel size (default:11)
+  --gpu GPU             specify the gpu to use
+  --batch_size          batch size for inference (default:256)
+  --cardinality         ResNeXt cardinality
+  --window WINDOW       half window size to smooth the score for output (default:9)
 ```
 
-### 1. Build Protein Structures with EM maps
+## 1. Run DAQ 
 ```
-python3 main.py --mode=0 -F=[Map_path] --gpu=0 --contour=[contour_level]
+python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size] 
 ```
-Here [Map_path] is the cryo-EM map file path in your computer. [contour_level] is optional, if not please just use default 0.
+Here [Map_path] is the cryo-EM map file path in your computerl [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
+Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
+### Running Example
 ```
+python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/2566_3J6B_9.mrc --window 9 --stride 2
+```
+Results of this example is saved in [2566_Result]()
