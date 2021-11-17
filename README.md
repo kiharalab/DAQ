@@ -106,4 +106,28 @@ Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]".
 ```
 python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/2566_3J6B_9.mrc --window 9 --stride 2
 ```
-Results of this example is saved in [2566_Result]()
+Results of this example is saved in [2566_Result](https://github.com/kiharalab/DAQ/tree/main/result)
+### Preparing the input map
+If the cryo-EM map grid spacing is not 1, it typically takes longer time to resample the map to have grid spacing 1 by our script. Hence, you can also use [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/) to accelerate the speed by providing the script a resampled map:
+```
+1 open your map via chimeraX. 
+2 In the bottom command line to type command: vol resample #1 spacing 1.0
+3 In the bottom command line to type command: save newmap.mrc model #2
+4 Then you can use the resampled map to upload
+```
+
+## 2. Visualization Result
+In Pymol, please type the following command line:
+```
+spectrum b, blue_white_red,  all, -1,1
+```
+![](https://github.com/kiharalab/DAQ/blob/main/result/visualization.png)
+Here blue region means the quality is acceptable while red region means the quality is not so good.
+
+## Output file
+1. An overall score PDB file, where scores of all residues are saved in b-factor column.
+2. N-chain based score PDB file, where score of residues in the specific chain are saved in b-factor column.
+3. Prediction File: prediction.txt, which includes all our predicted probabilities for all voxels scanned across the map.
+4. *_new.mrc, a resized map file with grid spacing=1.
+5. *.trimmap, an intermediate file save the input voxel data for the network.
+
