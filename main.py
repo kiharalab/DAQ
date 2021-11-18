@@ -21,7 +21,7 @@ if __name__ == "__main__":
         choose = params['gpu']
         if choose is not None:
             os.environ["CUDA_VISIBLE_DEVICES"] = choose
-        cur_map_path = os.path.abspath(params['F'])
+        cur_map_path = params['F']#os.path.abspath(params['F'])
         #process the map path if it's ending with .gz
         if ".gz"==cur_map_path[-3:]:
             from ops.os_operation import unzip_gz
