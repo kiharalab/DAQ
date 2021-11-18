@@ -74,7 +74,7 @@ def save_pdb_with_score(p,residue_dict,filename):
     Natm=1
     for resn in p:
         
-        sco = -p[resn][3] #Opposit!! Lower is better for pymol
+        sco = p[resn][3] #Opposit!! Lower is better for pymol
         current_residue = residue_dict[resn]
         for item in current_residue:
             line='ATOM{:7d}{:4}  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,item[1],p[resn][2] ,item[0],int(resn),item[2],item[3],item[4],sco)
