@@ -73,5 +73,5 @@ if __name__ == "__main__":
         print("Please check result here: %s"%score_save_path)
         print("Please open it in pymol and visualize it by putting the following command to Pymol:")
         print("-"*100)
-        print("spectrum b, blue_white_red,  all, -1,1")
+        print("spectrum b, red_white_blue,  all, -1,1")
         print("-"*100)
