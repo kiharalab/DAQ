@@ -45,8 +45,8 @@ def generate_trimmap(save_path,origin_map_path,input_pdb_path,params):
     os.system("rm *.o")
     os.system("make")  # compile the code
     os.chdir(root_path)
-    commandline = run_code_path + ' -i ' + new_map_path + ' -p '+str(input_pdb_path)+\
-                      ' -v ' + str(half_voxel_size) + \
+    commandline = run_code_path + ' -i "' + new_map_path + '" -p "'+str(input_pdb_path)+\
+                      '" -v ' + str(half_voxel_size) + \
                       ' -s ' + str(factor) + ' -L 0.005 >' + trimmap_path
     #if not os.path.exists(trimmap_path) or os.path.getsize(trimmap_path)<=10000:
     os.system(commandline)

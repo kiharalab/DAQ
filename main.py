@@ -47,7 +47,7 @@ if __name__ == "__main__":
         os.system("chmod 777 "+exe_path)
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
         new_map_path = os.path.join(save_path,map_name+"_new.mrc")
-        os.system(exe_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
+        os.system(exe_path+" -i '"+new_map_path+"' -p '"+output_path+"' -Q "+str(pdb_path)+" >"+raw_score_save_path)
 
         #smooth the score to give the final output
         from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
