@@ -118,15 +118,15 @@ If the cryo-EM map grid spacing is not 1, it typically takes longer time to resa
 ```
 
 ## 2. Visualization Result
-In Pymol, please type the following command line:
+In Pymol, open "dqa_score_w9.pdb" file, please type the following command line:
 ```
-spectrum b, blue_white_red,  all, -1,1
+spectrum b, red_white_blue,  all, -1,1
 ```
 ![](https://github.com/kiharalab/DAQ/blob/main/result/visualization.png)
 Here blue region means the quality is acceptable while red region means the quality is not so good.
 
 ## Output file
-1. An overall score PDB file, where scores of all residues are saved in b-factor column.
+1. An overall score PDB file: dqa_score_w9.pdb, where scores of all residues are saved in b-factor column.
 2. N-chain based score PDB file, where score of residues in the specific chain are saved in b-factor column.
 3. Prediction File: prediction.txt, which includes all our predicted probabilities for all voxels scanned across the map.
 4. *_new.mrc, a resized map file with grid spacing=1.
