@@ -105,7 +105,7 @@ Here [Map_path] is the cryo-EM map file path in your computerl [Structure_path] 
 Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
 ### Running Example
 ```
-python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/2566_3J6B_9.mrc --window 9 --stride 2
+python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/3J6B_9.pdb --window 9 --stride 2
 ```
 Results of this example is saved in [2566_Result](https://github.com/kiharalab/DAQ/tree/main/result)
 ### Preparing the input map
