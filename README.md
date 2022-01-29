@@ -28,7 +28,7 @@ Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John 
 ```
 
 ## Colab Website (Online platform): https://bit.ly/daq-score
-**All the functions in this github are available here**
+**All the functions in this github are available here. Related instructions are included in the Colab website.**
 
 ## Introduction
 An increasing number of protein structures are determined by cryogenic electron microscopy (cryo-EM). Although the resolution of determined cryo-EM density maps is improving in general, there are still many cases where amino acids of a protein are assigned with different levels of confidence, including those assigned with relatively high ambiguity. Here, we developed a method that identifies potential misassignment of residues in the map, including residue shifts along an otherwise correct main-chain trace. The score, named DAQ, computes the likelihood that the local density corresponds to different amino acids, atoms, and secondary structures from the map density distribution and assesses how well amino acids in the reconstructed model structure agree with the likelihood. DAQ is complementary to existing model validation scores for cryo-EM that examine local density gradient in the map or stereochemical geometry of the structure model. When DAQ was applied to different versions of model structure entries in PDB that were derived from the same density maps, a clear improvement of DAQ-score was observed in the newer versions of the models. The DAQ-score also found potential misassignment errors in a substantial number of over 4400 deposited protein structure models built into cryo-EM maps.
