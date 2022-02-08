@@ -101,6 +101,8 @@ python3 main.py -h:
 ```
 python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size] 
 ```
+**Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure. 
+
 Here [Map_path] is the cryo-EM map file path in your computerl [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
 Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
 ### Running Example
@@ -132,3 +134,5 @@ Here blue region means the quality is acceptable while red region means the qual
 4. *_new.mrc, a resized map file with grid spacing=1.
 5. *.trimmap, an intermediate file save the input voxel data for the network.
 
+## Q&A
+For possible errors and solutions, please check [QA.md](https://github.com/kiharalab/DAQ/blob/main/QA.md)
