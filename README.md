@@ -98,6 +98,7 @@ python3 main.py -h:
 ```
 
 ## 1. Run DAQ 
+Since DAQ(AA) yields the best score 
 ```
 python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size] 
 ```
