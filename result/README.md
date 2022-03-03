@@ -1,5 +1,5 @@
 # Output files 
-In this example, we used map EMD-2566 and part of its aligned structure chain 9 of structure with PDB-ID 3J6B.
+In this example, we used map EMD-2566 and part of its aligned structure chain 9 of structure with PDB-ID 3J6B. In the released, we only output DAQ(AA) score since it performed best among all 3 scores.
 
 1. 2566_3J6B_9.mrc: Input map file in mrc format.
 2. 2566_3J6B_9_new.mrc: Resized map file with grid_size=1
