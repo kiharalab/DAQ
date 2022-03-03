@@ -128,11 +128,7 @@ spectrum b, red_white_blue,  all, -1,1
 Here blue region means the quality is acceptable while red region means the quality is not so good. Here we put DAQ(AA) score in the b-factor columns.
 
 ## Output file
-1. An overall score PDB file: dqa_score_w9.pdb, where scores of all residues are saved in b-factor column.
-2. N-chain based score PDB file, where score of residues in the specific chain are saved in b-factor column.
-3. Prediction File: prediction.txt, which includes all our predicted probabilities for all voxels scanned across the map.
-4. *_new.mrc, a resized map file with grid spacing=1.
-5. *.trimmap, an intermediate file save the input voxel data for the network.
+The detailed instructions are [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
 
 ## Q&A
 For possible errors and solutions, please check [QA.md](https://github.com/kiharalab/DAQ/blob/main/QA.md)
