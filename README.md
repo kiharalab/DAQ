@@ -126,7 +126,7 @@ In Pymol, open "dqa_score_w9.pdb" file, please type the following command line:
 spectrum b, red_white_blue,  all, -1,1
 ```
 ![](https://github.com/kiharalab/DAQ/blob/main/result/visualization.png)
-Here blue region means the quality is acceptable while red region means the quality is not so good. Here we put DAQ(AA) score in the b-factor columns.
+Here blue region means the quality is acceptable while red region means the quality is not so good. Here we put DAQ(AA) score in the b-factor columns. Detailed explanation is [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
 
 ## Output file
 The detailed instructions are [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
