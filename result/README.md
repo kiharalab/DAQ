@@ -9,3 +9,13 @@ In this example, we used map EMD-2566 and part of its aligned structure(chain 9,
 6. dqa_score_w9.pdb: a final overall output pdb with window averaged score. Here the scores are saved in b-factor column.
 7. dqa_score_w9_9.pdb： a chain-based pdb for window averaged daq score, here it's for the chain 9.
 8. visualization.png: visualization result of the daq score.  
+
+# Example Analysis
+This example is discussed in the paper “Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps” by Genki Terashi,  Xiao Wang, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara (in submission, 2022) in Fig. 4c.
+
+This protein is Chain 9 of the Ribonuclease III domain from PDB entries 3J6B. When 3J6B is compared with another PDB entry 5MRF, the sequence identity of these pairs is 99.5%. However, residue 227 to 241 are shifted between the two structures. 
+
+In the 3.2 Å resolution EM map (EMD-2566, 3J6B), density for the terminal helix region (His227-Lys241) is not of high enough quality on its own to confirm choices on residue or atom identity. Positions in this model truncated as alanine underscore the lack of interpretability in this region. There are, however, a few telltale signs that there are misalignments, such as hydrophobic side-chains exposed to solvent (3J6B Ile232, which aligns with 5MRF Asn234) and polar residues packed into the core of the fold (3J6B His227 vs. 5MRF Leu229, 3J6B Ser228 vs. 5MRF Val230, and 3J6B Ser219 vs. 5MRF Leu220). At these positions, side chains in 5MRF fit the environment well. For these reasons, 5MRF-9 seems to be a better fit for both EM maps, consistent with the DAQ(AA) score, and the inconsistent regions in 3J6B (227 to 241), which correspond to the red regions in the associated image, may have errors.
+
+To have a more clear understanding of the region, we attached the comparison in visualization.png. The left panel shows the DAQ(AA) score for this structure (EMD-2566, 3J6B chain 9). The misalignment region is shown in red by DAQ, which indicates lower scores for this region. In the right panel, we compared the assignment of 3J6B-9 (shown in green) and 5MRF-9 (shown in cyan) in the helix region where DAQ outputs low scores. We can see the difference of the residue assignment in 3J6B-9 from 5MRF-9.
+![](https://github.com/kiharalab/DAQ/blob/main/result/visualization.png)
