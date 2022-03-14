@@ -123,7 +123,7 @@ If the cryo-EM map grid spacing is not 1, it typically takes longer time to resa
 ## 2. Visualization Result
 In Pymol, open "dqa_score_w9.pdb" file, please type the following command line:
 ```
-spectrum b, red_white_blue,  all, -1,1
+spectrum b, blue_white_red,  all, -1,1
 ```
 ![](https://github.com/kiharalab/DAQ/blob/main/result/visualization.png)
 Here blue region means the quality is acceptable while red region means the quality is not so good. Here we put DAQ(AA) score in the b-factor columns. Detailed explanation is [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
