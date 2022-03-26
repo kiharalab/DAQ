@@ -56,7 +56,7 @@ You have two options to install dependency on your computer:
 ##### 3.1.1[`install pip`](https://pip.pypa.io/en/stable/installing/).
 ##### 3.1.2  Install dependency in command line.
 ```
-pip3 install -r requirement.txt --user
+pip3 install -r requirements.txt --user
 ```
 If you encounter any errors, you can install each library one by one:
 ```
@@ -73,7 +73,7 @@ If you encounter any errors, you can install each library one by one:
 ```
 conda create -n daq python=3.8.5
 conda activate daq
-pip install -r requirement.txt 
+pip install -r requirements.txt 
 ```
 Each time when you want to run my code, simply activate the environment by
 ```
