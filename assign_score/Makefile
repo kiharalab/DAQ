@@ -10,20 +10,20 @@ PG = DAQscore_colab
 OPT = -O3 -msse4.2 -msse -msse2 -msse3 -mmmx -ftree-vectorize -ftree-vectorizer-verbose=3 -ffast-math -march=native -funroll-loops -fopenmp
 
 $(PG) : main.c $(OBJECTS) $(HEADER) $(COM)
-	$(CC) -o $(PG) main.c $(OBJECTS) -lm $(OPT) 
+	$(CC) -std=c99 -o $(PG) main.c $(OBJECTS) -lm $(OPT) 
 
 
 chkcmdline.o : chkcmdline.c $(HEADER)
-	$(CC) -O3 -c chkcmdline.c
+	$(CC) -std=c99 -O3 -c chkcmdline.c
 
 readpdb.o : readpdb.c $(HEADER)
-	$(CC) -O3 -c readpdb.c -lm $(OPT)
+	$(CC) -std=c99 -O3 -c readpdb.c -lm $(OPT)
 
 mrc.o : mrc.c $(HEADER)
-	$(CC) -O3 -c mrc.c -lm $(OPT)
+	$(CC) -std=c99 -O3 -c mrc.c -lm $(OPT)
 
 thread.o : thread.c $(HEADER)
-	$(CC) -O3 -c thread.c -lm $(OPT)
+	$(CC) -std=c99 -O3 -c thread.c -lm $(OPT)
 
 dp.o : dp.c $(HEADER)
-	$(CC) -O3 -c dp.c -lm $(OPT)
+	$(CC) -std=c99 -O3 -c dp.c -lm $(OPT)
