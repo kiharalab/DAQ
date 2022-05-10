@@ -39,7 +39,7 @@ An increasing number of protein structures are determined by cryogenic electron 
 
 ## Overview of DAQ Score
 ![image](https://user-images.githubusercontent.com/50850224/167702710-5350bcd7-2acb-4054-b424-e751bdf6aee0.png)
-where aa(i) is the amino acid type of residue i, P_aa(i)(i) is the computed probability for amino acid type aa(i) for the nearest grid point to the Cα atom of residue i. The density of probability is normalized by the average probability of amino acid type aa(i) across over all the atom positions in the protein model.<br>
+where aa(i) is the amino acid type of residue i, P_aa(i)(i) is the computed probability for amino acid type aa(i) for the nearest grid point to the Cα atom of residue i. As shown in the equation, the probability is normalized by the average probability of amino acid type aa(i) across over all atom positions in the protein model.<br>
 *If the assignment is correct, DAQ will be positive, and negative if the assignment may be incorrect.<br>
 *If a position in the map does not have distinct density pattern for the assigned amino acid (or secondary structure, Calpha atom), DAQ will be close to 0.
 
