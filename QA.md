@@ -21,3 +21,8 @@ terminate called after throwing an instance of 'std::runtime_error'
 Aborted (core dumped)
 ```
 A: That is typically because of available GPU id is not correct. Please use export CUDA_VISIBLE_DEVICES=xx to set the GPU with cuda support.
+
+3 What if If the entire model is fitted poorly? 
+```
+In that case, simply all the residues in the model will have a negative score, indicating that each residue in the model may be incorrectly assigned.
+```
