@@ -49,7 +49,7 @@ def read_pdb_info(filename,chain_id):
         for l in result:
             if l.startswith('ATOM') and l[21]==chain_id:
                 chain_name = l[21]
-                atom_name = l[12:15]
+                atom_name = l[12:16]
                 x=float(l[30:38])
                 y=float(l[38:46])
                 z=float(l[46:55])
@@ -73,11 +73,12 @@ def save_pdb_with_score(p,residue_dict,filename):
     output = open(filename, 'w')
     Natm=1
     for resn in p:
-        
+            
         sco = p[resn][3] #Opposit!! Lower is better for pymol
         current_residue = residue_dict[resn]
+        print(current_residue)
         for item in current_residue:
-            line='ATOM{:7d}{:4}  {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,item[1],p[resn][2] ,item[0],int(resn),item[2],item[3],item[4],sco)
+            line='ATOM{:7d} {:4} {:3} {:1}{:4d}    {:8.3f}{:8.3f}{:8.3f}  1.00{:6.2f}\n'.format(Natm,item[1],p[resn][2] ,item[0],int(resn),item[2],item[3],item[4],sco)
             Natm = Natm+1
             output.write(line)
     output.close()
