@@ -110,7 +110,7 @@ python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window
 ```
 **Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure. 
 
-Here [Map_path] is the cryo-EM map file path in your computerl [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
+Here [Map_path] is the cryo-EM map file path in your computer, which can be *.mrc and *.mrc.gz format, [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
 Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
 ### Running Example
 ```
