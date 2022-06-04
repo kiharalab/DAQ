@@ -16,8 +16,8 @@ def get_resscore(filename,window,chain_id):
                 #print('Res',resn,p[resn])
         #Window Score
         for resn in p:
-            cnt=1
-            sco=p[resn][1]
+            cnt=0
+            sco=0 #p[resn][1]
             
             for check_c in range(int(resn)-window,int(resn)+window+1):
                 c=str(check_c)
