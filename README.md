@@ -127,7 +127,7 @@ If the cryo-EM map grid spacing is not 1, it typically takes longer time to resa
 ```
 
 ## 2. Visualization Result
-In Pymol, open "dqa_score_w9.pdb" file, please type the following command line:
+In Pymol, open "daq_score_w9.pdb" file, please type the following command line:
 ```
 spectrum b, red_white_blue,  all, -1,1
 ```
