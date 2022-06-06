@@ -5,9 +5,9 @@ In this example, we used map EMD-2566 and part of its aligned structure(chain 9,
 2. 2566_3J6B_9_new.mrc: Resized map file with grid_size=1.
 3. 2566_3J6B_9.trimmap: an input file for the network that saves the normalized box input.
 4. prediction.txt: a prediction output file by the network, which includes all our predicted probabilities for all input boxes of the map.
-5. dqa_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. Here the scores are saved in b-factor column.
-6. dqa_score_w9.pdb: a final overall output pdb with window averaged score. Here the scores are saved in b-factor column.
-7. dqa_score_w9_9.pdb： a chain-based pdb for window averaged daq score, here it's for the chain 9.
+5. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. Here the scores are saved in b-factor column.
+6. daq_score_w9.pdb: a final overall output pdb with window averaged score. Here the scores are saved in b-factor column.
+7. daq_score_w9_9.pdb： a chain-based pdb for window averaged daq score, here it's for the chain 9.
 8. visualization.png: visualization result of the daq score.  
 
 # Example Analysis
