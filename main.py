@@ -43,7 +43,7 @@ if __name__ == "__main__":
         daq_code_path = os.path.join(os.getcwd(),"assign_score")
         exe_path = compile_online(daq_code_path)
         
-        raw_score_save_path = os.path.join(save_path,"dqa_raw_score.pdb")
+        raw_score_save_path = os.path.join(save_path,"daq_raw_score.pdb")
         os.system("chmod 777 "+exe_path)
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
         map_name = map_name.replace("(","").replace(")","")
@@ -53,18 +53,18 @@ if __name__ == "__main__":
         #smooth the score to give the final output
         from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
         window_size = params['window']
-        score_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+".pdb")
+        score_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+".pdb")
         chain_list = read_chain_set(pdb_path)
         print("total different chains:",chain_list)
         for chain_name in chain_list:
-            score_chain_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
+            score_chain_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
             score_dict = get_resscore(raw_score_save_path,window_size,chain_name)
             residue_dict = read_pdb_info(pdb_path,chain_name)
             save_pdb_with_score(score_dict, residue_dict,score_chain_save_path)
         #concat all chain visualization together
         with open(score_save_path,'w') as wfile:
             for chain_name in chain_list:
-                score_chain_save_path = os.path.join(save_path,"dqa_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
+                score_chain_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+"_"+str(chain_name)+".pdb")
                 with open(score_chain_save_path,'r') as rfile:
                     line = rfile.readline()
                     while line:
