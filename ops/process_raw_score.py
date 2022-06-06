@@ -11,7 +11,7 @@ def get_resscore(filename,window,chain_id):
                 y=float(l[38:46])
                 z=float(l[46:54])
                 cd=([x,y,z])
-                sco=float(l[61:67])
+                sco=float(l[60:66])
                 p[resn]=[cd,sco,res_name]
                 #print('Res',resn,p[resn])
         #Window Score
@@ -37,7 +37,7 @@ def get_pdb(filename):
                 y=float(l[38:46])
                 z=float(l[46:55])
                 cd=[x,y,z]
-                sco=float(l[61:67])
+                sco=float(l[60:66])
                 AA = l[17:20]
                 p[resn]=[cd,AA]
     return p
