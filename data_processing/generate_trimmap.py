@@ -5,10 +5,7 @@ import shutil
 
 def generate_trimmap(save_path,origin_map_path,input_pdb_path,params):
 
-    map_name = os.path.split(origin_map_path)[1].replace(".mrc", "")
-    map_name = map_name.replace("(","").replace(")","")
-    save_path = os.path.join(save_path, map_name)
-    mkdir(save_path)
+
     cur_map_path = os.path.join(save_path,map_name+".mrc")
     if not os.path.exists(cur_map_path):
         shutil.copy(origin_map_path,cur_map_path)
