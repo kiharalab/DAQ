@@ -120,7 +120,7 @@ if __name__ == "__main__":
         #smooth the score to give the final output
         from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
         window_size = params['window']
-        listfiles = os.listdir(pdb_dir)
+        listfiles = [x for x in os.listdir(pdb_dir) if ".pdb" in x]
         root_save_path = save_path
         for pdb_item in listfiles:
             pdb_path = os.path.join(pdb_dir,pdb_item)
