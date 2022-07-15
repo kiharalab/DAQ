@@ -8,7 +8,7 @@
    <img src="https://img.shields.io/badge/dependencies-tested-green">
    <img src="https://img.shields.io/badge/licence-GNU-green">
 </a>      <br>
-DAQ is a computational tool using deep learning that can estimate the residue-wise local quality fro protein models from cryo-Electron Microscopy (EM) maps.  
+DAQ is a computational tool using deep learning that can estimate the residue-wise local quality for protein models from cryo-Electron Microscopy (EM) maps.  
 
 Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
 
