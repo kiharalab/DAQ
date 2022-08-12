@@ -17,13 +17,13 @@ License: GPL v3 for academic use. (For commercial use, please contact us for dif
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
 ## Citation:
-Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer & Daisuke Kihara. Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps. (2021). [PDF](Submitted)
+[Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S.R. et al. Residue-wise local quality estimation for protein models from cryo-EM maps. Nat Methods (2022). https://doi.org/10.1038/s41592-022-01574-4](https://www.nature.com/articles/s41592-022-01574-4)
 ```
-@article{genki2021DAQ,   
+@article{genki2022DAQ,   
   title={Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps},   
   author={Genki Terashi, Xiao Wang, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara},    
-  journal={(Submitted)},    
-  year={2021}    
+  journal={Nature Methods},    
+  year={2022}    
 }   
 ```
 
