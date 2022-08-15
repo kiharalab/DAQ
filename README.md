@@ -27,7 +27,7 @@ Contact: Daisuke Kihara (dkihara@purdue.edu)
 }   
 ```
 
-## Colab Website (Online platform): https://bit.ly/daq-score
+## Colab Website (Online platform): https://bit.ly/daq-score or https://github.com/kiharalab/DAQ/blob/main/DAQ_Score.ipynb
 **All the functions in this github are available here. Related instructions are included in the Colab website.**
 
 ## Introduction
