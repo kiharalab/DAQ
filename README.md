@@ -19,7 +19,7 @@ DAQ is a computational tool using deep learning that can estimate the residue-wi
 
 Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
 
-License: GPL v3 for academic use. (For commercial use, please contact us for different licensing.)
+License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.) 
 
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
