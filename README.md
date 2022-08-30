@@ -23,6 +23,8 @@ License: GPL v3. (If you are interested in a different license, for example, for
 
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
+For technical problems or questions, please reach to Xiao Wang (wang3702@purdue.edu).
+
 ## Citation:
 [Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S.R. et al. Residue-wise local quality estimation for protein models from cryo-EM maps. Nat Methods (2022). https://doi.org/10.1038/s41592-022-01574-4](https://www.nature.com/articles/s41592-022-01574-4)
 ```
