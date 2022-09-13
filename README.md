@@ -26,7 +26,7 @@ Contact: Daisuke Kihara (dkihara@purdue.edu)
 For technical problems or questions, please reach to Xiao Wang (wang3702@purdue.edu).
 
 ## Citation:
-[Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S.R., Tesmer, J. J., & Kihara, D.. Residue-wise local quality estimation for protein models from cryo-EM maps. Nat Methods (2022). https://doi.org/10.1038/s41592-022-01574-4](https://www.nature.com/articles/s41592-022-01574-4)
+[Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S.R., Tesmer, J. J., & Kihara, D.. Residue-wise local quality estimation for protein models from cryo-EM maps. Nat Methods 19, pages 1116–1125 (2022). https://doi.org/10.1038/s41592-022-01574-4](https://www.nature.com/articles/s41592-022-01574-4)
 ```
 @article{genki2022DAQ,   
   title={Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps},   
