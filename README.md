@@ -149,5 +149,11 @@ Here blue region means the quality is acceptable while red region means the qual
 ## Output file
 The detailed instructions are [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
 
+## DAQ Container 
+To build the Docker image, change the current directory to DAQ_container. Use the following command to create the image:
+sudo docker build -t daq .
+
+To use the image, please follow the rest of the user manual available at https://kiharalab.org/emsuites/daq.php.
+
 ## Q&A
 For possible errors and solutions, please check [QA.md](https://github.com/kiharalab/DAQ/blob/main/QA.md)
