@@ -52,8 +52,8 @@
 #define VALIABLE 0
 #define CONSTANT 1
 
-int FINAL_ATNo;
-int FINAL_RENo;
+//int FINAL_ATNo;
+//int FINAL_RENo;
 typedef struct{
 	        //double x,y,z;
 	        float x,y,z;
