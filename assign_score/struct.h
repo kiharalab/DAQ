@@ -10,30 +10,30 @@
 #define GRINO 20000
 
 
-/*def §Œ¥ƒ∂≠¿ﬂƒÍ*/
-#define INC 15/*ligand≤Û≈æ§Œ≈ŸøÙ*/
-#define MOV 1/*ligand∞‹∆∞§Œ≈ŸøÙ*/
-#define START_RT 0 /*ligand≤Û≈æ§Œstart*/
-#define START_MV 0 /*ligand∞‹∆∞§Œstart*/
+/*def „ÅÆÁí∞Â¢ÉË®≠ÂÆö*/
+#define INC 15/*ligandÂõûËª¢„ÅÆÂ∫¶Êï∞*/
+#define MOV 1/*ligandÁßªÂãï„ÅÆÂ∫¶Êï∞*/
+#define START_RT 0 /*ligandÂõûËª¢„ÅÆstart*/
+#define START_MV 0 /*ligandÁßªÂãï„ÅÆstart*/
 #define FIN_RT 360
 #define FIN_MV 0
 #define ON 1
 #define OFF 0
 #define TRUE 0
 #define FALSE -1
-/*#define MATFILE "result030106"*/ /*•π•≥•¢•ﬁ•»•Í•Ø•π§Œ•’•°•§•Î*/
+/*#define MATFILE "result030106"*/ /*„Çπ„Ç≥„Ç¢„Éû„Éà„É™„ÇØ„Çπ„ÅÆ„Éï„Ç°„Ç§„É´*/
 #define MATSIZE 1500
 //#define MATLEN 600
-#define MATAMI 24 /*•ﬁ•»•Í•Ø•π§Œ•¢•ﬂ•Œª¿ºÔŒ‡*/
+#define MATAMI 24 /*„Éû„Éà„É™„ÇØ„Çπ„ÅÆ„Ç¢„Éü„ÉéÈÖ∏Á®ÆÈ°û*/
 
-#define CSHNUM 20 /*æ◊∆Õªƒ¥øÙ§Œ¿©∏¬*/
+#define CSHNUM 20 /*Ë°ùÁ™ÅÊÆãÂü∫Êï∞„ÅÆÂà∂Èôê*/
 
-/*•ﬁ•Ø•Ì¿ﬂƒÍ*/
+/*„Éû„ÇØ„É≠Ë®≠ÂÆö*/
 #define X(a) (a)*(a)
-#define L(a,b,c,d,e,f) (sqrt((d-a)*(d-a)+(e-b)*(e-b)+(f-c)*(f-c)))/*•Ÿ•Ø•»•Îƒπ*/
-#define RAS(a) (2.000000*PI*a/360.000000)/*≈Ÿ->•È•∏•¢•Û*/
-#define RAD(a) (2.000000*PI*a/360.000000)/*≈Ÿ->•È•∏•¢•Û*/
-#define ANG(a) (360.000000*a/(2.000000*PI))/*•È•∏•¢•Û->≈Ÿ*/
+#define L(a,b,c,d,e,f) (sqrt((d-a)*(d-a)+(e-b)*(e-b)+(f-c)*(f-c)))/*„Éô„ÇØ„Éà„É´Èï∑*/
+#define RAS(a) (2.000000*PI*a/360.000000)/*Â∫¶->„É©„Ç∏„Ç¢„É≥*/
+#define RAD(a) (2.000000*PI*a/360.000000)/*Â∫¶->„É©„Ç∏„Ç¢„É≥*/
+#define ANG(a) (360.000000*a/(2.000000*PI))/*„É©„Ç∏„Ç¢„É≥->Â∫¶*/
 
 #define GAUSS(a,b) 1.00/(sqrt(2.00*PI)*b)*exp(-(a*a)/(2.0*b*b))
 
@@ -42,7 +42,7 @@
 
 #define MAXMTX   4
 
-/*∑Î≤ÃΩ–Œœ*/
+/*ÁµêÊûúÂá∫Âäõ*/
 #define TOP 3000
 
 #define NOT_GAUSS 1
@@ -51,8 +51,8 @@
 #define VALIABLE 0
 #define CONSTANT 1
 
-int FINAL_ATNo;
-int FINAL_RENo;
+//int FINAL_ATNo;
+//int FINAL_RENo;
 typedef struct{
 	        //double x,y,z;
 	        float x,y,z;
