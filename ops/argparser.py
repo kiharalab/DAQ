@@ -9,6 +9,7 @@ def argparser():
     parser.add_argument('-M', type=str,default="best_model/qa_model/Multimodel.pth",  help='QA deep learning model path')
     parser.add_argument("-P",type=str,help="PDB file path")
     parser.add_argument('--mode',type=int,required=True,help='Running Mode')
+    parser.add_argument("--output",type=str,default=None,help='output directory')
     #parser.add_argument("--contour",type=float,default=0,help="Map contour level")
     parser.add_argument("--stride",type=int,default=1,help="Stride size for scanning maps (default:1)")
     parser.add_argument("--voxel_size",type=int,default=11,help="Input voxel size (default:11)")

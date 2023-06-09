@@ -37,7 +37,11 @@ if __name__ == "__main__":
             cur_map_path = unzip_gz(cur_map_path)
         model_path = os.path.abspath(params['M'])
         pdb_path = os.path.abspath(params['P'])
-        save_path = init_save_path(cur_map_path)
+        if params['output'] is None:
+            save_path = init_save_path(cur_map_path)
+        else:
+            save_path=params['output']
+            mkdir(save_path)
         #give pdb path to save computing voxels
         from data_processing.generate_trimmap import generate_trimmap
         save_path,trimmap_path = generate_trimmap(save_path,cur_map_path,pdb_path,params)
@@ -96,8 +100,11 @@ if __name__ == "__main__":
         model_path = os.path.abspath(params['M'])
 
         pdb_dir = os.path.abspath(params['P'])
-
-        save_path = init_save_path(cur_map_path)
+        if params['output'] is None:
+            save_path = init_save_path(cur_map_path)
+        else:
+            save_path=params['output']
+            mkdir(save_path)
         from ops.pdb_utils import  concat_pdbs
         pdb_path = os.path.join(save_path,"concat.pdb")
         concat_pdbs(pdb_dir,pdb_path)
