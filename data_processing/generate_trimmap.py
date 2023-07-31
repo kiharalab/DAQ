@@ -13,6 +13,8 @@ def generate_trimmap(save_path,origin_map_path,input_pdb_path,params):
         shutil.copy(origin_map_path,cur_map_path)
 
     new_map_path = cur_map_path[:-4]+"_new.mrc"
+    from process_map.Unify_Map import  Unify_Map
+    cur_map_path = Unify_Map(cur_map_path,cur_map_path[:-4]+"_unified.mrc")
     from process_map.Reform_Map_Voxel import Reform_Map_Voxel, Reform_Map_Voxel_Final
     raise_exception_flag = False
     try:
