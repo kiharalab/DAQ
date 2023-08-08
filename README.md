@@ -39,7 +39,7 @@ For technical problems or questions, please reach to Xiao Wang (wang3702@purdue.
   publisher={Nature Publishing Group US New York}
 }
 ```
-
+## Online Server: https://em.kiharalab.org/algorithm/daqscore
 ## Colab Website (Online platform): https://bit.ly/daq-score or https://github.com/kiharalab/DAQ/blob/main/DAQ_Score.ipynb
 **All the functions in this github are available here. Related instructions are included in the Colab website.**
 
