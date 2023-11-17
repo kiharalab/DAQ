@@ -5114,6 +5114,7 @@ bool ProbQA(PDB *p,GRAPH *g,int mode){
 	 //printf("%8.3f%8.3f%8.3f%6.2f%6.2f\n",tmp[0],tmp[1],tmp[2],1.0,Satm);
 	 //if(mode==3) //Show Only AAscore
 	 printf("%8.3f%8.3f%8.3f%6.2f%6.2f\n",tmp[0],tmp[1],tmp[2],1.0,Saa);
+	 printf("#ATOM= %.3f AA= %.3f\n",Satm,Saa);
 	 //printf("#SS= %.3f ATOM= %.3f AA= %.3f TOTAL= %.3f\n",Sss,Satm,Saa,Sss+Satm+Saa);
 	 //printf("#H_SS %.2f * %.2f\n",MapLogSS[0],SeqSS[0]);
 	 //printf("#E_SS %.2f * %.2f\n",MapLogSS[1],SeqSS[1]);
