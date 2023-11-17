@@ -5,7 +5,21 @@ In this example, we used map EMD-2566 and part of its aligned structure(chain 9,
 2. 2566_3J6B_9_new.mrc: Resized map file with grid_size=1.
 3. 2566_3J6B_9.trimmap: an input file for the network that saves the normalized box input.
 4. prediction.txt: a prediction output file by the network, which includes all our predicted probabilities for all input boxes of the map.
-5. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. Here the scores are saved in b-factor column.
+5. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. For each ATOM line, the Amino-Acid Type scores (AAscores) are saved in b-factor column. The "#ATOM=" lines indicate the C-alpha ATOM scores and AA scores.
+```
+ATOM      0  CA  VAL 9  29     375.211 218.122 165.067  1.00 -2.37
+#ATOM= 0.440 AA= -2.370
+ATOM      1  CA  ILE 9  30     374.127 214.846 166.700  1.00 -1.00
+#ATOM= 0.110 AA= -1.000
+ATOM      2  CA  TYR 9  31     377.109 214.570 169.056  1.00  1.75
+#ATOM= 1.463 AA= 1.745
+ATOM      3  CA  LEU 9  32     377.281 211.233 170.917  1.00  0.37
+#ATOM= 1.057 AA= 0.366
+ATOM      4  CA  HIS 9  33     380.233 211.908 173.279  1.00  0.69
+#ATOM= 0.502 AA= 0.688
+ATOM      5  CA  LYS 9  34     382.772 209.030 173.465  1.00  1.21
+#ATOM= 1.562 AA= 1.207
+```
 6. daq_score_w9.pdb: a final overall output pdb with window averaged score. Here the scores are saved in b-factor column.
 7. daq_score_w9_9.pdb： a chain-based pdb for window averaged daq score, here it's for the chain 9.
 8. visualization.png: visualization result of the daq score.  
