@@ -63,9 +63,11 @@ if __name__ == "__main__":
         os.system(exe_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
 
         #smooth the score to give the final output
-        from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
+        from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set,get_resscore_atom
         window_size = params['window']
+        window_size_atom = 0
         score_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+".pdb")
+        score_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+".pdb")
         chain_list = read_chain_set(pdb_path)
         print("total different chains:",chain_list)
         for chain_name in chain_list:
@@ -73,6 +75,11 @@ if __name__ == "__main__":
             score_dict = get_resscore(raw_score_save_path,window_size,chain_name)
             residue_dict = read_pdb_info(pdb_path,chain_name)
             save_pdb_with_score(score_dict, residue_dict,score_chain_save_path)
+
+            score_chain_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+"_"+str(chain_name)+".pdb")
+            score_dict_atom = get_resscore_atom(raw_score_save_path,window_size_atom,chain_name)
+            residue_dict_atom = read_pdb_info(pdb_path,chain_name)
+            save_pdb_with_score(score_dict_atom, residue_dict_atom, score_chain_save_path_atom)
         #concat all chain visualization together
         with open(score_save_path,'w') as wfile:
             for chain_name in chain_list:
@@ -82,7 +89,17 @@ if __name__ == "__main__":
                     while line:
                         wfile.write(line)
                         line = rfile.readline()
+
+        with open(score_save_path_atom,'w') as wfile:
+            score_chain_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+"_"+str(chain_name)+".pdb")
+            with open(score_chain_save_path_atom,'r') as rfile:
+                    line = rfile.readline()
+                    while line:
+                        wfile.write(line)
+                        line = rfile.readline()
         print("Please check result here: %s"%score_save_path)
+        print("Please check result here: %s"%score_save_path_atom)
+
         print("Please open it in pymol and visualize it by putting the following command to Pymol:")
         print("-"*100)
         print("spectrum b, red_white_blue,  all, -1,1")
