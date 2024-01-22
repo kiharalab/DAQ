@@ -4,15 +4,15 @@ from ops.os_operation import mkdir
 import time
 def compile_online(code_path):
     exe_path = os.path.join(code_path,"DAQscore_colab")
-    if os.path.exists(exe_path):
-        os.remove(exe_path)
-    root_path = os.getcwd()
-    os.chdir(code_path)
-    os.system("make")
-    os.chdir(root_path)
-    if not os.path.exists(exe_path):
-        print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
-    assert os.path.exists(exe_path)
+    #if os.path.exists(exe_path):
+    #    os.remove(exe_path)
+    #root_path = os.getcwd()
+    #os.chdir(code_path)
+    #os.system("make")
+    #os.chdir(root_path)
+    #if not os.path.exists(exe_path):
+    #    print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
+    #assert os.path.exists(exe_path)
     return exe_path
 
 def init_save_path(origin_map_path):
@@ -23,7 +23,13 @@ def init_save_path(origin_map_path):
     save_path = os.path.join(save_path, map_name)
     mkdir(save_path)
     return save_path
-
+import subprocess
+import time
+def get_gpu_memory_usage():
+    result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used', '--format=csv,nounits,noheader'], stdout=subprocess.PIPE)
+    output = result.stdout.decode('utf-8').strip()
+    memory_usage = [int(x) for x in output.split('\n')]
+    return memory_usage
 if __name__ == "__main__":
     params = argparser()
     if params['mode']==0:
@@ -49,6 +55,13 @@ if __name__ == "__main__":
         from predict.predict_trimmap import predict_trimmap
         output_path = os.path.join(save_path, "prediction.txt")
         #if not os.path.exists(output_path):
+       # gpu = get_gpu_memory_usage()
+       # free_gpu =12288 - max(gpu)
+        #while free_gpu<=6000:
+        #    print("waiting for available gpu")
+        #    time.sleep(60)
+        #    gpu = get_gpu_memory_usage()
+         #   free_gpu =12288 - max(gpu)
         output_path = predict_trimmap(trimmap_path, save_path, model_path, params)
         print("Our predictions are saved in %s, please have a check!"%output_path)
         #further call daq score to output the final score
@@ -60,9 +73,12 @@ if __name__ == "__main__":
         map_name = os.path.split(cur_map_path)[1].replace(".mrc", "")
         map_name = map_name.replace("(","").replace(")","")
         new_map_path = os.path.join(save_path,map_name+"_new.mrc")
+        print("exe_path")
+        print(exe_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
         os.system(exe_path+" -i "+new_map_path+" -p "+output_path+" -Q "+str(pdb_path)+" >"+raw_score_save_path)
 
         #smooth the score to give the final output
+        print("window_size")
         from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set
         window_size = params['window']
         score_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+".pdb")
