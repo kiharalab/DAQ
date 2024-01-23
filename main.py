@@ -71,7 +71,7 @@ if __name__ == "__main__":
         #smooth the score to give the final output
         from ops.process_raw_score import read_pdb_info,get_resscore,save_pdb_with_score,read_chain_set,get_resscore_atom
         window_size = params['window']
-        window_size_atom = 0
+        window_size_atom = 9
         score_save_path = os.path.join(save_path,"daq_score_w"+str(window_size)+".pdb")
         score_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+".pdb")
         chain_list = read_chain_set(pdb_path)
