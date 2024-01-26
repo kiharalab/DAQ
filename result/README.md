@@ -5,7 +5,8 @@ In this example, we used map EMD-2566 and part of its aligned structure(chain 9,
 2. 2566_3J6B_9_new.mrc: Resized map file with grid_size=1.
 3. 2566_3J6B_9.trimmap: an input file for the network that saves the normalized box input.
 4. prediction.txt: a prediction output file by the network, which includes all our predicted probabilities for all input boxes of the map.
-5. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. For each ATOM line, the Amino-Acid Type scores (AAscores) are saved in b-factor column. The "#ATOM=" lines indicate the C-alpha ATOM scores and AA scores.
+   For each line, colum are corresponding to 0-2:xyz, 3-22:AA type Probabilities, 23-28: Atom Probabilities, 29-31: Secondary structure Probabilities.
+6. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. For each ATOM line, the Amino-Acid Type scores (AAscores) are saved in b-factor column. The "#ATOM=" lines indicate the C-alpha ATOM scores and AA scores.
 ```
 ATOM      0  CA  VAL 9  29     375.211 218.122 165.067  1.00 -2.37
 #ATOM= 0.440 AA= -2.370
