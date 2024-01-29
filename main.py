@@ -97,12 +97,13 @@ if __name__ == "__main__":
                         line = rfile.readline()
 
         with open(score_save_path_atom,'w') as wfile:
-            score_chain_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+"_"+str(chain_name)+".pdb")
-            with open(score_chain_save_path_atom,'r') as rfile:
-                    line = rfile.readline()
-                    while line:
-                        wfile.write(line)
+            for chain_name in chain_list:
+                score_chain_save_path_atom = os.path.join(save_path,"daq_score_atom_w"+str(window_size_atom)+"_"+str(chain_name)+".pdb")
+                with open(score_chain_save_path_atom,'r') as rfile:
                         line = rfile.readline()
+                        while line:
+                            wfile.write(line)
+                            line = rfile.readline()
         print("Please check result here: %s"%score_save_path)
         print("Please check result here: %s"%score_save_path_atom)
 
