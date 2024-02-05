@@ -6,20 +6,20 @@ In this example, we used map EMD-2566 and part of its aligned structure(chain 9,
 3. 2566_3J6B_9.trimmap: an input file for the network that saves the normalized box input.
 4. prediction.txt: a prediction output file by the network, which includes all our predicted probabilities for all input boxes of the map.
    For each line, colum are corresponding to 0-2:xyz, 3-22:AA type Probabilities, 23-28: Atom Probabilities, 29-31: Secondary structure Probabilities.
-6. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. For each ATOM line, the Amino-Acid Type scores (AAscores) are saved in b-factor column. The "#ATOM=" lines indicate the C-alpha ATOM scores and AA scores.
+6. daq_raw_score.pdb: an output pdb with raw score, where the score is directly computed by the network without window average. For each ATOM line, the Amino-Acid Type scores (AAscores) are saved in b-factor column. The "#ATOM=" lines indicate the C-alpha ATOM scores and AA scores. The "#ProbAA" lines indicate the probabilities of 20 Amino-acid types. The "#DAQAA" lines indicate the DAQ(AA) scores of 20 Amino-acid types.
 ```
 ATOM      0  CA  VAL 9  29     375.211 218.122 165.067  1.00 -2.37
 #ATOM= 0.440 AA= -2.370
+#ProbAA COORDS:375.211,218.122,165.067,ALA:0.004,VAL:0.004,PHE:0.033,PRO:0.022,MET:0.016,ILE:0.007,LEU:0.019,ASP:0.028,GLU:0.052,LYS:0.240,ARG:0.120,SER:0.012,THR:0.012,TYR:0.052,HIS:0.132,CYS:0.001,ASN:0.090,TRP:0.009,GLN:0.143,GLY:0.004
+#DAQAA COORDS:375.211,218.122,165.067,ALA:-2.363,VAL:-2.370,PHE:-0.486,PRO:-0.462,MET:-0.632,ILE:-2.024,LEU:-1.647,ASP:-0.672,GLU:-0.258,LYS:1.152,ARG:0.460,SER:-1.430,THR:-1.368,TYR:-0.119,HIS:1.410,CYS:-2.066,ASN:0.395,TRP:-0.755,GLN:0.877,GLY:-1.933
 ATOM      1  CA  ILE 9  30     374.127 214.846 166.700  1.00 -1.00
 #ATOM= 0.110 AA= -1.000
+#ProbAA COORDS:374.127,214.846,166.700,ALA:0.007,VAL:0.013,PHE:0.032,PRO:0.064,MET:0.010,ILE:0.020,LEU:0.040,ASP:0.043,GLU:0.061,LYS:0.149,ARG:0.041,SER:0.023,THR:0.033,TYR:0.037,HIS:0.085,CYS:0.001,ASN:0.194,TRP:0.020,GLN:0.122,GLY:0.005
+#DAQAA COORDS:374.127,214.846,166.700,ALA:-1.949,VAL:-1.261,PHE:-0.520,PRO:0.622,MET:-1.054,ILE:-1.000,LEU:-0.890,ASP:-0.236,GLU:-0.096,LYS:0.675,ARG:-0.615,SER:-0.786,THR:-0.341,TYR:-0.456,HIS:0.963,CYS:-1.745,ASN:1.163,TRP:-0.007,GLN:0.722,GLY:-1.707
 ATOM      2  CA  TYR 9  31     377.109 214.570 169.056  1.00  1.75
 #ATOM= 1.463 AA= 1.745
-ATOM      3  CA  LEU 9  32     377.281 211.233 170.917  1.00  0.37
-#ATOM= 1.057 AA= 0.366
-ATOM      4  CA  HIS 9  33     380.233 211.908 173.279  1.00  0.69
-#ATOM= 0.502 AA= 0.688
-ATOM      5  CA  LYS 9  34     382.772 209.030 173.465  1.00  1.21
-#ATOM= 1.562 AA= 1.207
+#ProbAA COORDS:377.109,214.570,169.056,ALA:0.005,VAL:0.002,PHE:0.235,PRO:0.008,MET:0.012,ILE:0.005,LEU:0.014,ASP:0.006,GLU:0.003,LYS:0.016,ARG:0.128,SER:0.011,THR:0.005,TYR:0.338,HIS:0.093,CYS:0.004,ASN:0.014,TRP:0.075,GLN:0.019,GLY:0.007
+#DAQAA COORDS:377.109,214.570,169.056,ALA:-2.227,VAL:-2.933,PHE:1.483,PRO:-1.399,MET:-0.888,ILE:-2.502,LEU:-1.947,ASP:-2.272,GLU:-3.056,LYS:-1.550,ARG:0.528,SER:-1.512,THR:-2.298,TYR:1.745,HIS:1.057,CYS:-0.691,ASN:-1.477,TRP:1.309,GLN:-1.120,GLY:-1.385
 ```
 6. daq_score_w9.pdb: a final overall output pdb with window averaged score. Here the scores are saved in b-factor column.
 7. daq_score_w9_9.pdb： a chain-based pdb for window averaged daq score, here it's for the chain 9.
