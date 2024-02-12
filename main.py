@@ -4,15 +4,16 @@ from ops.os_operation import mkdir
 import time
 def compile_online(code_path):
     exe_path = os.path.join(code_path,"DAQscore_colab")
-    # if os.path.exists(exe_path):
-    #    os.remove(exe_path)
-    # root_path = os.getcwd()
-    # os.chdir(code_path)
-    # os.system("make")
-    # os.chdir(root_path)
-    # if not os.path.exists(exe_path):
-    #    print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
-    # assert os.path.exists(exe_path)
+    if params.get('server') != 1:
+        if os.path.exists(exe_path):
+            os.remove(exe_path)
+        root_path = os.getcwd()
+        os.chdir(code_path)
+        os.system("make")
+        os.chdir(root_path)
+        if not os.path.exists(exe_path):
+            print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
+            assert os.path.exists(exe_path)
     return exe_path
 
 def init_save_path(origin_map_path):

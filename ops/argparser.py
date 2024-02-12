@@ -17,6 +17,7 @@ def argparser():
     parser.add_argument('--batch_size', type=int, default=256, help='batch size for inference (default:256)')
     parser.add_argument('--cardinality', default=32, type=int, help='ResNeXt cardinality')
     parser.add_argument("--window",default=9,type=int,help="half window size to smooth the score for output (default:9)")
+    parser.add_argument('--server',type=int,required=False,help='EM Server (--server=1)')
     args = parser.parse_args()
     params = vars(args)
     return params
