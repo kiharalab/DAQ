@@ -13,7 +13,7 @@ def compile_online(code_path):
         os.chdir(root_path)
         if not os.path.exists(exe_path):
             print("Assign score compilation failed! Please make contact with dkihara@purdue.edu!")
-            assert os.path.exists(exe_path)
+        assert os.path.exists(exe_path)
     return exe_path
 
 def init_save_path(origin_map_path):
