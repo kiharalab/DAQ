@@ -72,29 +72,13 @@ Pymol(for visualization): https://pymol.org/2/
 git clone https://github.com/kiharalab/DAQ && cd DAQ
 ```
 
-### 3. Build dependencies.   
-You have two options to install dependency on your computer:
-#### 3.1 Install with pip and python(Ver 3.6.9).
-##### 3.1.1[`install pip`](https://pip.pypa.io/en/stable/installing/).
-##### 3.1.2  Install dependency in command line.
-```
-pip3 install -r requirements.txt --user
-```
-If you encounter any errors, you can install each library one by one:
-```
-!pip install mrcfile==1.2.0 
-!pip install numpy>=1.19.4
-!pip install numba>=0.52.0
-!pip install torch>=1.6.0
-!pip install scipy>=1.6.0
-```
-
-#### 3.2 Install with anaconda
-##### 3.2.1 [`install conda`](https://bit.ly/daq-score). 
-##### 3.2.2 Install dependency in command line
+### 3. Build dependencies and install with anaconda 
+##### 3.1 [`install conda`](https://bit.ly/daq-score). 
+##### 3.2 Install dependency in command line
 ```
 conda create -n daq python=3.8.5
 conda activate daq
+conda install conda-forge::gcc_linux-64=14.1
 pip install -r requirements.txt 
 ```
 Each time when you want to run my code, simply activate the environment by
