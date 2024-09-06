@@ -78,7 +78,7 @@ git clone https://github.com/kiharalab/DAQ && cd DAQ
 ```
 conda create -n daq python=3.8.5
 conda activate daq
-conda install conda-forge::gcc_linux-64=14.1
+conda install conda-forge::gxx
 pip install -r requirements.txt 
 ```
 Each time when you want to run my code, simply activate the environment by
