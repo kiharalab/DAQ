@@ -1,7 +1,7 @@
-mrcfile==1.2.0
-numpy>=1.19.4
+mrcfile==1.5.4
+numpy>=1.19.4,<2
 numba>=0.52.0
-torch>=1.6.0
 scipy>=1.6.0
 configparser
 requests>=2.21.0,<3
+# torch==1.12.1
