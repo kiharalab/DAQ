@@ -79,7 +79,7 @@ git clone https://github.com/kiharalab/DAQ && cd DAQ
 conda create -n daq python=3.10 gcc gxx -c conda-forge
 conda activate daq
 pip3 install -r requirements.txt
-pip3 install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+pip3 install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 * This version of PyTorch supports a wider range of GPUs. We tested the following generations of NVIDIA GPUs:
   * Pascal (GTX 1080)
@@ -87,6 +87,7 @@ pip3 install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --
   * Turing (GTX 2080 Ti)
   * Ampere (A100)
   * Ada Lovelace (L40S)
+  * Hopper (H100)
 
 Each time when you want to run my code, simply activate the environment by
 ```
