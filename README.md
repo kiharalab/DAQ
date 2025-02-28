@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/50850224/184958409-88da0757-6cf3-400a-8de5-7695d3519226.png" width="300">
 </p>
 
-# DAQ 
+# DAQ
 
 <a href="https://github.com/marktext/marktext/releases/latest">
    <img src="https://img.shields.io/badge/DAQ-v1.0.0-green">
@@ -15,11 +15,11 @@
 
 
 
-DAQ is a computational tool using deep learning that can estimate the residue-wise local quality for protein models from cryo-Electron Microscopy (EM) maps.  
+DAQ is a computational tool using deep learning that can estimate the residue-wise local quality for protein models from cryo-Electron Microscopy (EM) maps.
 
-Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
+Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University.
 
-License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.) 
+License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.)
 
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
@@ -52,7 +52,7 @@ An increasing number of protein structures are determined by cryogenic electron 
 
 ## Overview of DAQ Score
 
-## $DAQ(AA)(i) = \log{(\frac{P_{aa(i)}(i)}{\sum_{j}(P_{aa(i)}(j)/N)})}$ 
+## $DAQ(AA)(i) = \log{(\frac{P_{aa(i)}(i)}{\sum_{j}(P_{aa(i)}(j)/N)})}$
 
 where $aa(i)$ is the amino acid type of residue i, $P_{aa(i)}(i)$ is the computed probability for amino acid type $aa(i)$ for the nearest grid point to the Cα atom of residue $i$. As shown in the equation, the probability is normalized by the average probability of amino acid type $aa(i)$ across over all atom positions in the protein model.
 <br>
@@ -62,29 +62,37 @@ where $aa(i)$ is the amino acid type of residue i, $P_{aa(i)}(i)$ is the compute
 
 
 ## Pre-required software
-Python 3 : https://www.python.org/downloads/    
-Pymol(for visualization): https://pymol.org/2/   
+Python 3 : https://www.python.org/downloads/
+Pymol(for visualization): https://pymol.org/2/
 
-## Installation  
-### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
-### 2. Clone the repository in your computer 
+## Installation
+### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+### 2. Clone the repository in your computer
 ```
 git clone https://github.com/kiharalab/DAQ && cd DAQ
 ```
 
-### 3. Build dependencies and install with anaconda 
-##### 3.1 [`install conda`](https://bit.ly/daq-score). 
+### 3. Build dependencies and install with anaconda
+##### 3.1 [`install conda`](https://bit.ly/daq-score).
 ##### 3.2 Install dependency in command line
 ```
-conda create -n daq python=3.8.5
+conda create -n daq python=3.10 gcc gxx -c conda-forge
 conda activate daq
-conda install conda-forge::gxx
-pip install -r requirements.txt 
+pip3 install -r requirements.txt
+pip3 install torch==2.6.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
+* This version of PyTorch supports a wider range of GPUs. We tested the following generations of NVIDIA GPUs:
+  * Pascal (GTX 1080)
+  * Volta (V100)
+  * Turing (GTX 2080 Ti)
+  * Ampere (A100)
+  * Ada Lovelace (L40S)
+  * Hopper (H100)
+
 Each time when you want to run my code, simply activate the environment by
 ```
 conda activate daq
-conda deactivate(If you want to exit) 
+conda deactivate(If you want to exit)
 ```
 
 ## Usage
@@ -103,15 +111,15 @@ python3 main.py -h:
   --window WINDOW       half window size to smooth the score for output (default:9)
 ```
 
-## 1. Run DAQ 
-Since DAQ(AA) yields the best score 
+## 1. Run DAQ
+Since DAQ(AA) yields the best score
 ```
-python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size] 
+python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size]
 ```
-**Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure. 
+**Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure.
 
 Here [Map_path] is the cryo-EM map file path in your computer, which can be *.mrc and *.mrc.gz format, [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
-Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
+Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]".
 ### Running Example
 ```
 python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/3J6B_9.pdb --window 9 --stride 2
@@ -120,7 +128,7 @@ Results of this example is saved in [2566_Result](https://github.com/kiharalab/D
 ### Preparing the input map
 If the cryo-EM map grid spacing is not 1, it typically takes longer time to resample the map to have grid spacing 1 by our script. Hence, you can also use [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/) to accelerate the speed by providing the script a resampled map:
 ```
-1 open your map via chimeraX. 
+1 open your map via chimeraX.
 2 In the bottom command line to type command: vol resample #1 spacing 1.0
 3 In the bottom command line to type command: save newmap.mrc model #2
 4 Then you can use the resampled map to upload
@@ -137,7 +145,7 @@ Here blue region means the quality is acceptable while red region means the qual
 ## Output file
 The detailed instructions are [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
 
-## DAQ Container 
+## DAQ Container
 To build the Docker image, change the current directory to DAQ_container. Use the following command to create the image:
 sudo docker build -t daq .
 
