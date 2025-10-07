@@ -4,4 +4,3 @@ numba>=0.52.0
 scipy>=1.6.0
 configparser
 requests>=2.21.0,<3
-# torch==1.12.1
