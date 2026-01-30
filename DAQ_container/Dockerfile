@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 COPY DAQ-main DAQ-main
 
@@ -11,11 +11,11 @@ RUN apt update && \
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 
-# WORKDIR /DAQ-main/assign_score
-# RUN make
+WORKDIR /DAQ-main/assign_score
+RUN make
 
-# WORKDIR /DAQ-main/process_map/gen_trimmap
-# RUN make
+WORKDIR /DAQ-main/process_map/gen_trimmap
+RUN make
 
 WORKDIR /DAQ-main
 RUN mkdir -p inputs

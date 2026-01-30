@@ -218,40 +218,79 @@ bool readmrc(MRC *mrc, char *filename){
 	 return true;
 	}
 
-	int nx,ny,nz;
-	float ncstart,nrstart,nsstart;
-	switch(ordermode){
-		case 1:
-			nx = xdim; ny = ydim; nz = zdim;
-			ncstart=mrc->ncstart,nrstart=mrc->nrstart;nsstart=mrc->nsstart;
-			break;
-		case 2:
-			nx = xdim; ny = zdim; nz = ydim;
-			ncstart=mrc->ncstart,nrstart=mrc->nsstart;nsstart=mrc->nrstart;
-			break;
-		case 3:
-			nx = ydim; ny = xdim; nz = zdim;
-			ncstart=mrc->nrstart,nrstart=mrc->ncstart;nsstart=mrc->nsstart;
-			break;
-		case 4:
-			nx = zdim; ny = xdim; nz = ydim;
-			ncstart=mrc->nsstart,nrstart=mrc->ncstart;nsstart=mrc->nrstart;
-			break;
-		case 5:
-			nx = ydim; ny = zdim; nz = xdim;
-			ncstart=mrc->nrstart,nrstart=mrc->nsstart;nsstart=mrc->ncstart;
-			break;
-		case 6:
-			nx = zdim; ny = ydim; nz = xdim;
-			ncstart=mrc->nsstart,nrstart=mrc->nrstart;nsstart=mrc->ncstart;
-			break;
-		default:
-			printf("Input file gives malformed dimension ordering.");
-			return true;
-	}
+//	int nx,ny,nz;
+//	float ncstart,nrstart,nsstart;
+//	switch(ordermode){
+//		case 1:
+//			nx = xdim; ny = ydim; nz = zdim;
+//			ncstart=mrc->ncstart,nrstart=mrc->nrstart;nsstart=mrc->nsstart;
+//			break;
+//		case 2:
+//			nx = xdim; ny = zdim; nz = ydim;
+//			ncstart=mrc->ncstart,nrstart=mrc->nsstart;nsstart=mrc->nrstart;
+//			break;
+//		case 3:
+//			nx = ydim; ny = xdim; nz = zdim;
+//			ncstart=mrc->nrstart,nrstart=mrc->ncstart;nsstart=mrc->nsstart;
+//			break;
+//		case 4:
+//			nx = zdim; ny = xdim; nz = ydim;
+//			ncstart=mrc->nsstart,nrstart=mrc->ncstart;nsstart=mrc->nrstart;
+//			break;
+//		case 5:
+//			nx = ydim; ny = zdim; nz = xdim;
+//			ncstart=mrc->nrstart,nrstart=mrc->nsstart;nsstart=mrc->ncstart;
+//			break;
+//		case 6:
+//			nx = zdim; ny = ydim; nz = xdim;
+//			ncstart=mrc->nsstart,nrstart=mrc->nrstart;nsstart=mrc->ncstart;
+//			break;
+//		default:
+//			printf("Input file gives malformed dimension ordering.");
+//			return true;
+//	}
+// mrc->ncstart=ncstart;
+// mrc->nrstart=nrstart;
+// mrc->nsstart=nsstart;
+   int nx,ny,nz;
+        float ncstart,nrstart,nsstart;
+        switch(ordermode){
+                case 1:
+                        nx = xdim; ny = ydim; nz = zdim;
+                        ncstart=mrc->ncstart;nrstart=mrc->nrstart;nsstart=mrc->nsstart;
+                        break;
+                case 2:
+                        nx = xdim; ny = zdim; nz = ydim;
+                        ncstart=mrc->ncstart;nrstart=mrc->nsstart;nsstart=mrc->nrstart;
+                        break;
+                case 3:
+                        nx = ydim; ny = xdim; nz = zdim;
+                        ncstart=mrc->nrstart;nrstart=mrc->ncstart;nsstart=mrc->nsstart;
+                        break;
+                case 4:
+                        nx = zdim; ny = xdim; nz = ydim;
+                        ncstart=mrc->nsstart;nrstart=mrc->ncstart;nsstart=mrc->nrstart;
+                        break;
+                case 5:
+                        nx = ydim; ny = zdim; nz = xdim;
+                        ncstart=mrc->nrstart;nrstart=mrc->nsstart;nsstart=mrc->ncstart;
+                        break;
+                case 6:
+                        nx = zdim; ny = ydim; nz = xdim;
+                        ncstart=mrc->nsstart;nrstart=mrc->nrstart;nsstart=mrc->ncstart;
+                        break;
+                default:
+                        printf("Input file gives malformed dimension ordering.");
+                        return true;
+        }
+
+//Updating nc,nr,ns start Fixed 2022-Oct13
  mrc->ncstart=ncstart;
  mrc->nrstart=nrstart;
  mrc->nsstart=nsstart;
+ printf("#NEW NCSTART %d\n",mrc->ncstart);
+ printf("#NEW NRSTART %d\n",mrc->nrstart);
+ printf("#NEW NSSTART %d\n",mrc->nsstart);
  mrc->xdim = nx;
  mrc->ydim = ny;
  mrc->zdim = nz;

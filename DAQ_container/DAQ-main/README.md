@@ -2,7 +2,7 @@
   <img src="https://user-images.githubusercontent.com/50850224/184958409-88da0757-6cf3-400a-8de5-7695d3519226.png" width="300">
 </p>
 
-# DAQ 
+# DAQ
 
 <a href="https://github.com/marktext/marktext/releases/latest">
    <img src="https://img.shields.io/badge/DAQ-v1.0.0-green">
@@ -15,25 +15,31 @@
 
 
 
-DAQ is a computational tool using deep learning that can estimate the residue-wise local quality for protein models from cryo-Electron Microscopy (EM) maps.  
+DAQ is a computational tool using deep learning that can estimate the residue-wise local quality for protein models from cryo-Electron Microscopy (EM) maps.
 
-Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University. 
+Copyright (C) 2021 Genki Terashi* , Xiao Wang*, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara, and Purdue University.
 
-License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.) 
+License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.)
 
 Contact: Daisuke Kihara (dkihara@purdue.edu)
 
-## Citation:
-[Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S.R. et al. Residue-wise local quality estimation for protein models from cryo-EM maps. Nat Methods (2022). https://doi.org/10.1038/s41592-022-01574-4](https://www.nature.com/articles/s41592-022-01574-4)
-```
-@article{genki2022DAQ,   
-  title={Residue-Wise Local Quality Estimation for Protein Models from Cryo-EM Maps},   
-  author={Genki Terashi, Xiao Wang, Sai Raghavendra Maddhuri Venkata Subramaniya, John J. G. Tesmer, and Daisuke Kihara},    
-  journal={Nature Methods},    
-  year={2022}    
-}   
-```
+For technical problems or questions, please reach to Xiao Wang (wang3702@purdue.edu).
 
+## Citation:
+[Terashi, G., Wang, X., Maddhuri Venkata Subramaniya, S. R., Tesmer, J. J. G. & Kihara, D. Residue-wise local quality estimation for protein models from cryo-EM maps. Nature Methods 19, 1116-1125, doi:10.1038/s41592-022-01574-4 (2022).](https://www.nature.com/articles/s41592-022-01574-4)
+```
+@article{terashi2022residue,
+  title={Residue-wise local quality estimation for protein models from cryo-EM maps},
+  author={Terashi, Genki and Wang, Xiao and Maddhuri Venkata Subramaniya, Sai Raghavendra and Tesmer, John JG and Kihara, Daisuke},
+  journal={Nature Methods},
+  volume={19},
+  number={9},
+  pages={1116--1125},
+  year={2022},
+  publisher={Nature Publishing Group US New York}
+}
+```
+## Online Server: https://em.kiharalab.org/algorithm/daqscore
 ## Colab Website (Online platform): https://bit.ly/daq-score or https://github.com/kiharalab/DAQ/blob/main/DAQ_Score.ipynb
 **All the functions in this github are available here. Related instructions are included in the Colab website.**
 
@@ -45,54 +51,51 @@ An increasing number of protein structures are determined by cryogenic electron 
 ![protocol](https://user-images.githubusercontent.com/50850224/142276557-c79df306-5cf9-40f9-a0b8-f7ef08176a7a.jpeg)
 
 ## Overview of DAQ Score
-![image](https://user-images.githubusercontent.com/50850224/167702710-5350bcd7-2acb-4054-b424-e751bdf6aee0.png)
-where aa(i) is the amino acid type of residue i, P_aa(i)(i) is the computed probability for amino acid type aa(i) for the nearest grid point to the Cα atom of residue i. As shown in the equation, the probability is normalized by the average probability of amino acid type aa(i) across over all atom positions in the protein model.<br>
+
+## $DAQ(AA)(i) = \log{(\frac{P_{aa(i)}(i)}{\sum_{j}(P_{aa(i)}(j)/N)})}$
+
+where $aa(i)$ is the amino acid type of residue i, $P_{aa(i)}(i)$ is the computed probability for amino acid type $aa(i)$ for the nearest grid point to the Cα atom of residue $i$. As shown in the equation, the probability is normalized by the average probability of amino acid type $aa(i)$ across over all atom positions in the protein model.
+<br>
 *If the assignment is correct, DAQ will be positive, and negative if the assignment may be incorrect.<br>
 *If a position in the map does not have distinct density pattern for the assigned amino acid (or secondary structure, Calpha atom), DAQ will be close to 0.
 
 
 
 ## Pre-required software
-Python 3 : https://www.python.org/downloads/    
-Pymol(for visualization): https://pymol.org/2/   
+Python 3 : https://www.python.org/downloads/
+Pymol(for visualization): https://pymol.org/2/
 
-## Installation  
-### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
-### 2. Clone the repository in your computer 
+## Installation
+### 1. [`Install git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+### 2. Clone the repository in your computer
 ```
 git clone https://github.com/kiharalab/DAQ && cd DAQ
 ```
 
-### 3. Build dependencies.   
-You have two options to install dependency on your computer:
-#### 3.1 Install with pip and python(Ver 3.6.9).
-##### 3.1.1[`install pip`](https://pip.pypa.io/en/stable/installing/).
-##### 3.1.2  Install dependency in command line.
+### 3. Build dependencies and install with anaconda
+##### 3.1 [`install conda`](https://bit.ly/daq-score).
+##### 3.2 Install dependency in command line
 ```
-pip3 install -r requirements.txt --user
+./install.sh
 ```
-If you encounter any errors, you can install each library one by one:
+or, if you want to specify a custom conda environment name:
 ```
-!pip install mrcfile==1.2.0 
-!pip install numpy>=1.19.4
-!pip install numba>=0.52.0
-!pip install torch>=1.6.0
-!pip install scipy>=1.6.0
+./install.sh <my-custom-daq-env-name>
 ```
+* This version of PyTorch supports a wider range of GPUs. We tested the following generations of NVIDIA GPUs:
+  * Pascal (GTX 1080)
+  * Volta (V100)
+  * Turing (GTX 2080 Ti)
+  * Ampere (A100)
+  * Ada Lovelace (L40S)
+  * Hopper (H100)
 
-#### 3.2 Install with anaconda
-##### 3.2.1 [`install conda`](https://bit.ly/daq-score). 
-##### 3.2.2 Install dependency in command line
-```
-conda create -n daq python=3.8.5
-conda activate daq
-pip install -r requirements.txt 
-```
 Each time when you want to run my code, simply activate the environment by
 ```
 conda activate daq
-conda deactivate(If you want to exit) 
+conda deactivate(If you want to exit)
 ```
+**Note:** If you created a conda environment with a custom name, you will need to run `conda activate <your-custom-name>` instead of the command shown above.
 
 ## Usage
 ```
@@ -110,15 +113,15 @@ python3 main.py -h:
   --window WINDOW       half window size to smooth the score for output (default:9)
 ```
 
-## 1. Run DAQ 
-Since DAQ(AA) yields the best score 
+## 1. Run DAQ
+Since DAQ(AA) yields the best score
 ```
-python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size] 
+python main.py --mode=0 -F [Map_path]  -P [Structure_path] --window [half_window_size] --stride [stride_size]
 ```
-**Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure. 
+**Please Run the script under "DAQ" directory**, otherwise it may raise errors because of the complilation failure.
 
 Here [Map_path] is the cryo-EM map file path in your computer, which can be *.mrc and *.mrc.gz format, [Structure_path] is the protein structure in pdb format; [half_window_size] is half of the window size that used for smoothing the residue-wise score based on a sliding window scanning the entire sequence, here half_window_size=(window_size-1)/2; [stride_size]  is the stride step to scan the maps.<br>
-Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]". 
+Output will be saved in "Predict_Result_WithPDB/[Input_Map_Name]".
 ### Running Example
 ```
 python main.py --mode=0 -F example/2566_3J6B_9.mrc -P example/3J6B_9.pdb --window 9 --stride 2
@@ -127,7 +130,7 @@ Results of this example is saved in [2566_Result](https://github.com/kiharalab/D
 ### Preparing the input map
 If the cryo-EM map grid spacing is not 1, it typically takes longer time to resample the map to have grid spacing 1 by our script. Hence, you can also use [ChimeraX](https://www.rbvi.ucsf.edu/chimerax/) to accelerate the speed by providing the script a resampled map:
 ```
-1 open your map via chimeraX. 
+1 open your map via chimeraX.
 2 In the bottom command line to type command: vol resample #1 spacing 1.0
 3 In the bottom command line to type command: save newmap.mrc model #2
 4 Then you can use the resampled map to upload
@@ -143,6 +146,12 @@ Here blue region means the quality is acceptable while red region means the qual
 
 ## Output file
 The detailed instructions are [here](https://github.com/kiharalab/DAQ/blob/main/result/README.md).
+
+## DAQ Container
+To build the Docker image, change the current directory to DAQ_container. Use the following command to create the image:
+sudo docker build -t daq .
+
+To use the image, please follow the rest of the user manual available at https://kiharalab.org/emsuites/daq.php.
 
 ## Q&A
 For possible errors and solutions, please check [QA.md](https://github.com/kiharalab/DAQ/blob/main/QA.md)

@@ -3352,7 +3352,7 @@ bool read_ptbl(PTBL *tbl,char *filename){
 
  tbl->prob=(double **)malloc(sizeof(double*)*N);
  while(fgets(line,5000,fpin)){ 
-  char* tmp = strdup(line);
+  //char* tmp = strdup(line);
   int j =0;
   const char* tok;
   tbl->prob[i]=(double *)malloc(sizeof(double)*100);
@@ -5114,10 +5114,23 @@ bool ProbQA(PDB *p,GRAPH *g,int mode){
 	 //printf("%8.3f%8.3f%8.3f%6.2f%6.2f\n",tmp[0],tmp[1],tmp[2],1.0,Satm);
 	 //if(mode==3) //Show Only AAscore
 	 printf("%8.3f%8.3f%8.3f%6.2f%6.2f\n",tmp[0],tmp[1],tmp[2],1.0,Saa);
+	 printf("#ATOM= %.3f AA= %.3f\n",Satm,Saa);
 	 //printf("#SS= %.3f ATOM= %.3f AA= %.3f TOTAL= %.3f\n",Sss,Satm,Saa,Sss+Satm+Saa);
 	 //printf("#H_SS %.2f * %.2f\n",MapLogSS[0],SeqSS[0]);
 	 //printf("#E_SS %.2f * %.2f\n",MapLogSS[1],SeqSS[1]);
 	 //printf("#C_SS %.2f * %.2f\n",MapLogSS[2],SeqSS[2]);
+	 //Show all Probability
+	 printf("#ProbAA COORDS:%.3f,%.3f,%.3f",tmp[0],tmp[1],tmp[2]);
+	 for(int aa_type=0;aa_type<20;aa_type++){
+		printf(",%3s:%.3f",RES_NAMES[aa_type],g->node[i].AAP[aa_type]);
+	 }
+	 printf("\n");
+	 //Show all AA Score
+	 printf("#DAQAA COORDS:%.3f,%.3f,%.3f",tmp[0],tmp[1],tmp[2]);
+	 for(int aa_type=0;aa_type<20;aa_type++){
+		printf(",%3s:%.3f",RES_NAMES[aa_type],MapLogAA[aa_type]);
+	 }
+	 printf("\n");
 	 Natm++;
   }
  }

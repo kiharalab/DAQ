@@ -12,6 +12,38 @@ def get_resscore(filename,window,chain_id):
                 z=float(l[46:54])
                 cd=([x,y,z])
                 sco=float(l[60:66])
+                print(sco)
+                p[resn]=[cd,sco,res_name]
+                #print('Res',resn,p[resn])
+        #Window Score
+        for resn in p:
+            cnt=0
+            sco=0 #p[resn][1]
+            
+            for check_c in range(int(resn)-window,int(resn)+window+1):
+                c=str(check_c)
+                if c in p:
+                    sco=sco+p[c][1]
+                    cnt=cnt+1
+            p[resn].append(sco/float(cnt))
+    return p
+
+def get_resscore_atom(filename,window,chain_id):
+    p={}
+    with open(filename) as result:
+        for l in result:
+            if (l.startswith('ATOM')) and l[21]==chain_id:
+                resn=l[22:26].replace(' ','')
+                #print('|'+l[30:38]+'|'+l[38:46]+'|'+l[46:54]+'|',resn)
+                res_name = l[17:20]
+                x=float(l[30:38])
+                y=float(l[38:46])
+                z=float(l[46:54])
+                cd=([x,y,z])
+                next_line = next(result)
+                print(next_line[6:12])
+                sco = float(next_line[6:12])
+                print(str(sco))
                 p[resn]=[cd,sco,res_name]
                 #print('Res',resn,p[resn])
         #Window Score
